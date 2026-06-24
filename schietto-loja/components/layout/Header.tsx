@@ -6,9 +6,7 @@ import { MessageCircle, Menu, X } from 'lucide-react'
 const NAV_LINKS = [
   { label: 'Início', href: '#' },
   { label: 'Sobre', href: '#sobre' },
-  { label: 'Home Decor', href: '#home-decor' },
-  { label: 'Semi Jóias', href: '#semi-joias' },
-  { label: 'Destaques', href: '#destaques' },
+  { label: 'Galeria', href: '#galeria' },
   { label: 'Localização', href: '#localizacao' },
 ] as const
 

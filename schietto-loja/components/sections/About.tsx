@@ -2,28 +2,27 @@ import AnimatedSectionHeader from '@/components/ui/AnimatedSectionHeader'
 
 const HIGHLIGHT_CARDS = [
   {
-    emoji: '✦',
-    title: 'Curadoria Exclusiva',
+    emoji: '🏪',
+    title: 'Experiência presencial',
     description:
-      'Cada peça é selecionada a mão, com critério estético e qualidade.',
+      'A loja foi feita para você explorar cada detalhe com tranquilidade.',
+  },
+  {
+    emoji: '✦',
+    title: 'Curadoria cuidadosa',
+    description:
+      'Peças selecionadas a mão, com olhar para beleza e qualidade.',
   },
   {
     emoji: '💎',
-    title: 'Semi Jóias de Qualidade',
-    description:
-      'Acessórios com banho em ouro e prata, resistentes e sofisticados.',
-  },
-  {
-    emoji: '🏠',
-    title: 'Home Decor Especial',
-    description:
-      'Objetos que transformam ambientes com personalidade e charme.',
+    title: 'Dois universos',
+    description: 'Home decor e semi jóias no mesmo espaço acolhedor.',
   },
   {
     emoji: '📍',
-    title: 'Em Pedreira, SP',
+    title: 'No coração de Pedreira',
     description:
-      'No polo de decoração mais importante do interior paulista.',
+      'Rua Primo Frazato, 30 — mesmo endereço do Caffè Schiètto.',
   },
 ] as const
 
@@ -35,14 +34,14 @@ export default function About() {
           <div className="lg:w-[55%]">
             <AnimatedSectionHeader>
               <p className="font-body text-xs font-normal uppercase tracking-widest text-loja-rosegold">
-                Nossa História
+                Sobre a loja
               </p>
               <h2 className="mt-4">
                 <span className="block font-display text-3xl font-light italic leading-tight text-loja-champagne sm:text-4xl lg:text-5xl">
-                  Mais do que uma loja,
+                  Um convite para
                 </span>
                 <span className="mt-1 block font-display text-4xl font-semibold leading-tight text-loja-offwhite sm:text-5xl">
-                  uma curadoria.
+                  nos visitar.
                 </span>
               </h2>
               <div className="my-8 h-0.5 w-[50px] bg-loja-rosegold" />
@@ -50,18 +49,16 @@ export default function About() {
 
             <div className="space-y-6">
               <p className="font-body text-base font-light leading-relaxed text-loja-champagne/70 lg:text-lg">
-                A Schiètto Home Decor & Semi Jóias nasceu em 2023 com uma
-                proposta clara: trazer para Pedreira uma experiência de compra
-                diferente. No coração de uma cidade conhecida nacionalmente por
-                seus artigos de decoração, escolhemos nos destacar pela
-                curadoria — selecionando peças que unem beleza, funcionalidade
-                e personalidade.
+                A Schiètto Home Decor & Semi Jóias é um espaço de decoração e
+                acessórios em Pedreira, SP. Este site é uma vitrine — um
+                primeiro contato visual para quem quer se inspirar antes de vir
+                até nós.
               </p>
               <p className="font-body text-base font-light leading-relaxed text-loja-champagne/70 lg:text-lg">
-                Cada objeto de decoração e cada semi joia que chega à nossa
-                loja passa por um olhar cuidadoso. Acreditamos que os detalhes
-                são os que mais importam — tanto para quem decora um lar quanto
-                para quem escolhe um acessório para completar o estilo.
+                Acreditamos que escolher uma peça para casa ou para o dia a dia
+                pede tempo, atenção e um ambiente acolhedor. Por isso, o melhor
+                caminho é conhecer tudo pessoalmente na loja, com calma e sem
+                pressa.
               </p>
             </div>
           </div>

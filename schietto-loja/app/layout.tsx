@@ -17,13 +17,13 @@ const bodyFont = DM_Sans({
 export const metadata: Metadata = {
   title: 'Schiètto Home Decor & Semi Jóias | Pedreira, SP',
   description:
-    'Loja de decoração e semi jóias no coração de Pedreira, SP. Peças cuidadosamente selecionadas para transformar sua casa e seu estilo desde 2023.',
+    'Vitrine da Schiètto em Pedreira, SP. Inspire-se com nossa decoração e semi jóias e venha nos visitar para conhecer as peças pessoalmente.',
   keywords:
-    'semi joias pedreira, home decor pedreira, decoração pedreira sp, joias pedreira',
+    'semi joias pedreira, home decor pedreira, decoração pedreira sp, loja schietto pedreira',
   openGraph: {
     title: 'Schiètto Home Decor & Semi Jóias',
     description:
-      'Loja de decoração e semi jóias no coração de Pedreira, SP.',
+      'Inspire-se com nossa vitrine e venha conhecer a loja em Pedreira, SP.',
     type: 'website',
     locale: 'pt_BR',
   },

@@ -43,9 +43,7 @@ const WHATSAPP_URL = 'https://wa.me/5519388937377'
 const NAV_LINKS = [
   { label: 'Início', href: '#' },
   { label: 'Sobre', href: '#sobre' },
-  { label: 'Home Decor', href: '#home-decor' },
-  { label: 'Semi Jóias', href: '#semi-joias' },
-  { label: 'Destaques', href: '#destaques' },
+  { label: 'Galeria', href: '#galeria' },
   { label: 'Localização', href: '#localizacao' },
 ] as const
 
@@ -152,7 +150,7 @@ export default function Footer() {
 
           <div className="mt-12 border-t border-loja-charcoal pt-8">
             <p className="text-center font-body text-xs text-loja-muted">
-              © 2024 Schiètto Home Decor & Semi Jóias · Pedreira, SP
+              © 2026 Schiètto Home Decor & Semi Jóias · Pedreira, SP
             </p>
           </div>
         </div>
