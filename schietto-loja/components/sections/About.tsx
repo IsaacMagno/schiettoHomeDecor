@@ -1,30 +1,37 @@
 import AnimatedSectionHeader from '@/components/ui/AnimatedSectionHeader'
+import { Gem, HeartHandshake, Sparkles, Building2 } from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 
-const HIGHLIGHT_CARDS = [
+const HIGHLIGHT_CARDS: {
+  icon: LucideIcon
+  title: string
+  description: string
+}[] = [
   {
-    emoji: '🏪',
-    title: 'Experiência presencial',
+    icon: Sparkles,
+    title: 'Curadoria exclusiva',
     description:
-      'A loja foi feita para você explorar cada detalhe com tranquilidade.',
+      'Peças escolhidas uma a uma, com olhar para harmonia, qualidade e personalidade.',
   },
   {
-    emoji: '✦',
-    title: 'Curadoria cuidadosa',
+    icon: HeartHandshake,
+    title: 'Atendimento personalizado',
     description:
-      'Peças selecionadas a mão, com olhar para beleza e qualidade.',
+      'Tempo e atenção para entender seu estilo e indicar o que faz sentido para você.',
   },
   {
-    emoji: '💎',
-    title: 'Dois universos',
-    description: 'Home decor e semi jóias no mesmo espaço acolhedor.',
-  },
-  {
-    emoji: '📍',
-    title: 'No coração de Pedreira',
+    icon: Gem,
+    title: 'Peças de alta qualidade',
     description:
-      'Rua Primo Frazato, 30 — mesmo endereço do Caffè Schiètto.',
+      'Decoração e semi jóias selecionadas para durar e encantar no dia a dia.',
   },
-] as const
+  {
+    icon: Building2,
+    title: 'Experiência no casarão',
+    description:
+      'Um ambiente acolhedor no andar superior de um casarão histórico em Pedreira.',
+  },
+]
 
 export default function About() {
   return (
@@ -34,14 +41,14 @@ export default function About() {
           <div className="lg:w-[55%]">
             <AnimatedSectionHeader>
               <p className="font-body text-xs font-normal uppercase tracking-widest text-loja-rosegold">
-                Sobre a loja
+                Sobre a Schiètto
               </p>
               <h2 className="mt-4">
                 <span className="block font-display text-3xl font-light italic leading-tight text-loja-champagne sm:text-4xl lg:text-5xl">
-                  Um convite para
+                  Bom gosto,
                 </span>
                 <span className="mt-1 block font-display text-4xl font-semibold leading-tight text-loja-offwhite sm:text-5xl">
-                  nos visitar.
+                  personalidade e sofisticação.
                 </span>
               </h2>
               <div className="my-8 h-0.5 w-[50px] bg-loja-rosegold" />
@@ -49,38 +56,43 @@ export default function About() {
 
             <div className="space-y-6">
               <p className="font-body text-base font-light leading-relaxed text-loja-champagne/70 lg:text-lg">
-                A Schiètto Home Decor & Semi Jóias é um espaço de decoração e
-                acessórios em Pedreira, SP. Este site é uma vitrine — um
-                primeiro contato visual para quem quer se inspirar antes de vir
-                até nós.
+                A Schiètto Home Decor & Semi Jóias nasceu do desejo de reunir, em
+                um só lugar, objetos que traduzem estilo de vida — peças que
+                contam histórias, elevam ambientes e enriquecem o cotidiano
+                com delicadeza.
               </p>
               <p className="font-body text-base font-light leading-relaxed text-loja-champagne/70 lg:text-lg">
-                Acreditamos que escolher uma peça para casa ou para o dia a dia
-                pede tempo, atenção e um ambiente acolhedor. Por isso, o melhor
-                caminho é conhecer tudo pessoalmente na loja, com calma e sem
-                pressa.
+                Cada escolha passa por uma curadoria cuidadosa. Na loja, você
+                encontra um espaço acolhedor para ver, sentir e descobrir o que
+                combina com a sua casa e com você — com calma, atenção e o
+                carinho de quem ama o que faz.
               </p>
             </div>
           </div>
 
           <div className="lg:w-[45%]">
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {HIGHLIGHT_CARDS.map((card) => (
-                <div
-                  key={card.title}
-                  className="rounded-lg border border-loja-rosegold/30 bg-loja-charcoal p-6 transition-all duration-300 hover:border-loja-rosegold hover:shadow-[0_8px_30px_rgba(183,110,121,0.2)]"
-                >
-                  <span className="text-2xl" aria-hidden="true">
-                    {card.emoji}
-                  </span>
-                  <h3 className="mt-3 font-display text-lg font-semibold text-loja-offwhite">
-                    {card.title}
-                  </h3>
-                  <p className="mt-2 font-body text-sm text-loja-muted">
-                    {card.description}
-                  </p>
-                </div>
-              ))}
+              {HIGHLIGHT_CARDS.map((card) => {
+                const Icon = card.icon
+                return (
+                  <div
+                    key={card.title}
+                    className="rounded-lg border border-loja-rosegold/30 bg-loja-charcoal p-6 transition-all duration-300 hover:border-loja-rosegold hover:shadow-[0_8px_30px_rgba(183,110,121,0.2)]"
+                  >
+                    <Icon
+                      className="h-6 w-6 text-loja-rosegold"
+                      strokeWidth={1.5}
+                      aria-hidden="true"
+                    />
+                    <h3 className="mt-3 font-display text-lg font-semibold text-loja-offwhite">
+                      {card.title}
+                    </h3>
+                    <p className="mt-2 font-body text-sm text-loja-muted">
+                      {card.description}
+                    </p>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>

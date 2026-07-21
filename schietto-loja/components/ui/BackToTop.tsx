@@ -22,7 +22,7 @@ export default function BackToTop() {
       type="button"
       onClick={scrollToTop}
       aria-label="Voltar ao topo"
-      className={`fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-loja-rosegold text-loja-offwhite shadow-lg transition-all duration-300 hover:bg-loja-charcoal focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2 ${
+      className={`fixed bottom-24 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-loja-rosegold text-loja-offwhite shadow-lg transition-all duration-300 hover:bg-loja-charcoal focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2 max-[480px]:bottom-[calc(max(6rem,env(safe-area-inset-bottom)+4.5rem))] max-[480px]:right-[max(1.5rem,env(safe-area-inset-right))] ${
         visible
           ? 'translate-y-0 opacity-100'
           : 'pointer-events-none translate-y-4 opacity-0'

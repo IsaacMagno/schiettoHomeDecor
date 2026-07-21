@@ -1,29 +1,29 @@
 import type { Metadata } from 'next'
-import { Cormorant_Garamond, DM_Sans } from 'next/font/google'
+import { Jost, Manrope } from 'next/font/google'
 import './globals.css'
 
-const displayFont = Cormorant_Garamond({
+const displayFont = Jost({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
   variable: '--font-display',
 })
 
-const bodyFont = DM_Sans({
+const bodyFont = Manrope({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '700'],
+  weight: ['300', '400', '500', '600', '700'],
   variable: '--font-body',
 })
 
 export const metadata: Metadata = {
-  title: 'Schiètto Home Decor & Semi Jóias | Pedreira, SP',
+  title: 'Schiètto Home Decor & Semi Jóias | Casarão Histórico · Pedreira, SP',
   description:
-    'Vitrine da Schiètto em Pedreira, SP. Inspire-se com nossa decoração e semi jóias e venha nos visitar para conhecer as peças pessoalmente.',
+    'Curadoria premium de home decor e semi jóias no andar superior de um casarão histórico em Pedreira. Inspire-se online e viva a experiência Schiètto na loja.',
   keywords:
-    'semi joias pedreira, home decor pedreira, decoração pedreira sp, loja schietto pedreira',
+    'home decor pedreira, semi joias pedreira, decoração premium pedreira sp, loja schietto casarão, consultoria home decor',
   openGraph: {
     title: 'Schiètto Home Decor & Semi Jóias',
     description:
-      'Inspire-se com nossa vitrine e venha conhecer a loja em Pedreira, SP.',
+      'Elegância em cada detalhe — curadoria de decoração e semi jóias em um casarão histórico no centro de Pedreira, SP.',
     type: 'website',
     locale: 'pt_BR',
   },

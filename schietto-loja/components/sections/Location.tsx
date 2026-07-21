@@ -11,8 +11,8 @@ const SCHEDULE = [
 
 export default function Location() {
   return (
-    <section id="localizacao" className="bg-loja-offwhite py-20 sm:py-28 lg:py-32">
-      <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
+    <section id="localizacao" className="scroll-mt-20 px-3 pb-3 sm:px-4 sm:pb-4">
+      <div className="overflow-hidden rounded-2xl bg-white px-6 py-16 sm:px-10 lg:px-16 lg:py-24">
         <div className="grid grid-cols-1 gap-12 text-center md:grid-cols-3 md:gap-8 md:text-left">
           {/* Horários */}
           <div className="flex flex-col items-center md:items-start">
@@ -66,7 +66,12 @@ export default function Location() {
               <p>Centro — Pedreira, SP</p>
               <p>CEP: 13920-000</p>
             </address>
-            <p className="mt-4 font-body text-sm italic text-loja-muted">
+            <p className="mt-4 font-body text-sm leading-relaxed text-loja-charcoal">
+              A loja fica no andar superior de um casarão histórico no centro de
+              Pedreira — um endereço com charme e história, pensado para uma
+              visita tranquila e inspiradora.
+            </p>
+            <p className="mt-3 font-body text-sm italic text-loja-muted">
               Mesmo endereço do{' '}
               <a
                 href="#"
@@ -79,7 +84,7 @@ export default function Location() {
               href={MAPS_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center justify-center rounded-sm border border-loja-rosegold px-6 py-2.5 font-body text-sm font-medium text-loja-rosegold transition-colors duration-300 hover:bg-loja-rosegold hover:text-loja-offwhite"
+              className="mt-6 inline-flex items-center justify-center rounded-full border border-loja-rosegold px-7 py-2.5 font-body text-sm font-medium text-loja-rosegold transition-colors duration-300 hover:bg-loja-rosegold hover:text-loja-offwhite"
             >
               Ver no Google Maps
             </a>
@@ -108,7 +113,7 @@ export default function Location() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center gap-2 rounded-sm bg-loja-rosegold px-6 py-2.5 font-body text-sm font-medium text-loja-offwhite transition-colors duration-300 hover:bg-loja-charcoal"
+              className="mt-6 inline-flex items-center gap-2 rounded-full bg-loja-rosegold px-7 py-2.5 font-body text-sm font-semibold text-loja-offwhite transition-colors duration-300 hover:bg-loja-charcoal"
             >
               <MessageCircle className="h-4 w-4" strokeWidth={1.5} />
               Chamar no WhatsApp
@@ -136,7 +141,7 @@ export default function Location() {
 
         <div className="mt-16 sm:mt-20">
           <AnimatedSectionHeader className="text-center">
-            <h2 className="font-display text-2xl font-normal italic text-loja-dark sm:text-3xl">
+            <h2 className="font-display text-2xl font-medium tracking-tight text-loja-dark sm:text-3xl">
               Nossa Localização
             </h2>
           </AnimatedSectionHeader>

@@ -1,86 +1,43 @@
-import Image from 'next/image'
-import { HERO_IMAGES } from '@/lib/gallery'
+import HeroSlider from '@/components/sections/HeroSlider'
+import SplitText from '@/components/ui/SplitText'
 
 export default function Hero() {
   return (
-    <section className="min-h-screen bg-loja-offwhite">
-      <div className="flex min-h-screen flex-col lg:flex-row">
-        <div className="flex flex-1 flex-col items-center justify-center px-6 py-28 text-center sm:px-8 lg:items-start lg:px-16 lg:py-0 lg:text-left xl:px-24">
-          <p className="animate-fade-in-up font-body text-xs font-normal uppercase tracking-widest text-loja-rosegold [animation-delay:0.2s]">
-            ✦ Schiètto
-          </p>
+    <section className="relative flex h-svh min-h-[600px] w-full items-end overflow-hidden bg-loja-dark">
+      {/* Slider de fundo: crossfade, autoplay, clique avança */}
+      <HeroSlider />
 
-          <h1 className="mt-6">
-            <span className="animate-fade-in-up block font-display text-4xl font-light italic leading-tight text-loja-muted sm:text-5xl md:text-6xl lg:text-7xl [animation-delay:0.4s]">
-              Objetos que
-            </span>
-            <span className="animate-fade-in-up block font-display text-5xl font-semibold leading-tight text-loja-dark sm:text-6xl md:text-7xl lg:text-8xl [animation-delay:0.5s]">
-              encantam.
-            </span>
-            <span className="animate-fade-in-up block font-display text-4xl font-light italic leading-tight text-loja-rosegold sm:text-5xl md:text-6xl lg:text-7xl [animation-delay:0.6s]">
-              e permanecem.
-            </span>
-          </h1>
+      {/* Conteúdo ancorado na base, à esquerda */}
+      <div className="pointer-events-none relative z-10 w-full px-6 pb-16 sm:px-10 lg:px-12 lg:pb-20">
+        <p className="animate-fade-in-up font-body text-xs font-medium uppercase tracking-[0.35em] text-loja-champagne [animation-delay:0.85s]">
+          Bem-vindo à Schiètto
+        </p>
 
-          <p className="animate-fade-in-up mt-8 max-w-[440px] font-body text-base font-light leading-relaxed text-loja-muted [animation-delay:0.7s]">
-            Decoração e semi jóias escolhidas com delicadeza, no coração de
-            Pedreira — para quem acredita que os detalhes fazem toda a
-            diferença.
-          </p>
+        <SplitText
+          as="h1"
+          text="Viva uma nova experiência em decoração e semi jóias"
+          delay={850}
+          className="mt-4 max-w-3xl font-display text-3xl font-medium leading-[1.15] tracking-tight text-loja-offwhite sm:text-5xl lg:text-6xl"
+        />
 
-          <div className="animate-fade-in-up mt-10 flex w-full max-w-sm flex-col gap-4 [animation-delay:0.8s] sm:max-w-md lg:max-w-none lg:flex-row lg:justify-start">
-            <a
-              href="#galeria"
-              className="inline-flex w-full items-center justify-center rounded-sm bg-loja-dark px-8 py-3.5 font-body text-sm font-medium text-loja-offwhite transition-colors duration-300 hover:bg-loja-charcoal focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2 sm:w-auto"
-            >
-              Ver vitrine
-            </a>
-            <a
-              href="#localizacao"
-              className="inline-flex w-full items-center justify-center rounded-sm border border-loja-rosegold px-8 py-3.5 font-body text-sm font-medium text-loja-rosegold transition-colors duration-300 hover:bg-loja-rosegold hover:text-loja-offwhite focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2 sm:w-auto"
-            >
-              Como chegar
-            </a>
-          </div>
+        <p className="animate-fade-in-up mt-5 max-w-xl font-body text-sm font-light leading-relaxed text-loja-offwhite/80 sm:text-base [animation-delay:1.3s]">
+          Curadoria premium no andar superior de um casarão histórico no
+          coração de Pedreira, SP.
+        </p>
 
-          <p className="animate-fade-in-up mt-8 font-body text-xs text-loja-muted [animation-delay:0.9s]">
-            📍 Pedreira, SP · Desde 2023
-          </p>
-        </div>
-
-        <div className="flex flex-1 items-center justify-center bg-gradient-to-br from-loja-champagne to-loja-blush px-6 py-12 sm:px-8 lg:py-0">
-          <div className="animate-fade-in-right group relative h-64 w-56 sm:h-72 sm:w-64 lg:h-96 lg:w-80 [animation-delay:0.5s]">
-            <div className="absolute inset-0 -rotate-[6deg] overflow-hidden rounded-lg opacity-80 transition-transform duration-500 ease-out group-hover:-translate-x-3 group-hover:-translate-y-2 group-hover:-rotate-[8deg]">
-              <Image
-                src={HERO_IMAGES.back}
-                alt="Peça de decoração da loja Schiètto"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 224px, 320px"
-                priority
-              />
-            </div>
-            <div className="absolute inset-0 -rotate-[2deg] overflow-hidden rounded-lg opacity-90 transition-transform duration-500 ease-out group-hover:translate-x-2 group-hover:-translate-y-1 group-hover:-rotate-[3deg]">
-              <Image
-                src={HERO_IMAGES.middle}
-                alt="Peça de decoração da loja Schiètto"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 224px, 320px"
-                priority
-              />
-            </div>
-            <div className="absolute inset-0 overflow-hidden rounded-lg border border-loja-gold bg-loja-offwhite shadow-[0_20px_60px_-15px_rgba(28,28,30,0.15)] transition-transform duration-500 ease-out group-hover:translate-y-2 group-hover:scale-[1.02]">
-              <Image
-                src={HERO_IMAGES.front}
-                alt="Semi joia da loja Schiètto"
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 256px, 320px"
-                priority
-              />
-            </div>
-          </div>
+        <div className="animate-fade-in-up pointer-events-auto mt-8 flex flex-col gap-3 sm:flex-row [animation-delay:1.5s]">
+          <a
+            href="#experiencias"
+            className="inline-flex items-center justify-center rounded-full bg-loja-offwhite px-8 py-3.5 font-body text-sm font-semibold text-loja-dark transition-all duration-300 hover:bg-loja-rosegold hover:text-loja-offwhite focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2"
+          >
+            Descubra a Schiètto
+          </a>
+          <a
+            href="#localizacao"
+            className="inline-flex items-center justify-center rounded-full border border-loja-offwhite/60 px-8 py-3.5 font-body text-sm font-medium text-loja-offwhite transition-all duration-300 hover:border-loja-offwhite hover:bg-loja-offwhite/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2"
+          >
+            Visite a loja
+          </a>
         </div>
       </div>
     </section>
