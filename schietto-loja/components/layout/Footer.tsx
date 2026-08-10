@@ -1,5 +1,11 @@
 import { MessageCircle, MapPin, Phone } from 'lucide-react'
-import NewsletterForm from '@/components/ui/NewsletterForm'
+import {
+  CAFE_URL,
+  INSTAGRAM_URL,
+  PHONE_DISPLAY,
+  PHONE_TEL,
+  WHATSAPP_URL,
+} from '@/lib/contact'
 
 function InstagramIcon({ className }: { className?: string }) {
   return (
@@ -21,31 +27,11 @@ function InstagramIcon({ className }: { className?: string }) {
   )
 }
 
-function FacebookIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-    </svg>
-  )
-}
-
-const WHATSAPP_URL = 'https://wa.me/5519388937377'
-
 const NAV_LINKS = [
   { label: 'Início', href: '#' },
   { label: 'Sobre', href: '#sobre' },
   { label: 'Experiências', href: '#experiencias' },
-  { label: 'Consultoria', href: '#consultoria' },
+  { label: 'Composições', href: '#composicoes' },
   { label: 'Galeria', href: '#galeria' },
   { label: 'Localização', href: '#localizacao' },
 ] as const
@@ -57,27 +43,6 @@ export default function Footer() {
   return (
     <footer className="px-3 pb-3 sm:px-4 sm:pb-4">
       <div className="overflow-hidden rounded-2xl bg-loja-dark">
-      {/* Bloco newsletter */}
-      <div className="border-b border-loja-charcoal">
-        <div className="mx-auto max-w-[1400px] px-6 py-16 lg:px-10 lg:py-20">
-          <div className="flex flex-col items-start gap-10 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-md">
-              <p className="font-body text-xs font-medium uppercase tracking-[0.35em] text-loja-rosegold">
-                Newsletter
-              </p>
-              <h2 className="mt-4 font-display text-2xl font-medium tracking-tight text-loja-offwhite sm:text-3xl">
-                Receba novidades e inspirações
-              </h2>
-              <p className="mt-3 font-body text-sm font-light leading-relaxed text-loja-champagne/60">
-                Novas peças, curadorias e histórias do casarão — direto no seu
-                e-mail, sem excessos.
-              </p>
-            </div>
-            <NewsletterForm />
-          </div>
-        </div>
-      </div>
-
       {/* Colunas principais */}
       <div className="mx-auto max-w-[1400px] px-6 py-16 lg:px-10">
         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
@@ -88,29 +53,20 @@ export default function Footer() {
               <span className="text-loja-rosegold">.</span>
             </p>
             <p className="mt-3 font-body text-sm font-light text-loja-champagne/70">
-              Home Decor & Semi Jóias
+              Home Decor & Semijoias
             </p>
             <p className="mt-1 font-body text-xs font-light text-loja-muted">
               Pedreira, SP · Desde 2023
             </p>
             <div className="mt-6 flex gap-4">
               <a
-                href="#"
+                href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram da Schiètto"
                 className="text-loja-muted transition-colors duration-300 hover:text-loja-rosegold focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2"
               >
                 <InstagramIcon className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook da Schiètto"
-                className="text-loja-muted transition-colors duration-300 hover:text-loja-rosegold focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2"
-              >
-                <FacebookIcon className="h-5 w-5" />
               </a>
             </div>
           </div>
@@ -144,10 +100,10 @@ export default function Footer() {
               <p className="flex items-center gap-2">
                 <Phone className="h-4 w-4 shrink-0 text-loja-rosegold" strokeWidth={1.5} aria-hidden="true" />
                 <a
-                  href="tel:+551938937377"
+                  href={PHONE_TEL}
                   className="transition-colors hover:text-loja-offwhite"
                 >
-                  (19) 3893-7377
+                  {PHONE_DISPLAY}
                 </a>
               </p>
             </address>
@@ -180,7 +136,9 @@ export default function Footer() {
             <div className="mt-6 border-t border-loja-charcoal pt-5">
               <p className="font-body text-xs text-loja-muted">Mesmo espaço:</p>
               <a
-                href="#"
+                href={CAFE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-1 inline-block font-body text-sm font-light text-loja-champagne/60 transition-colors duration-300 hover:text-loja-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2"
               >
                 Caffè Schiètto
@@ -191,7 +149,7 @@ export default function Footer() {
 
         <div className="mt-16 border-t border-loja-charcoal pt-8">
           <p className="text-center font-body text-xs font-light text-loja-muted">
-            © 2026 Schiètto Home Decor & Semi Jóias · Pedreira, SP
+            © 2026 Schiètto Home Decor & Semijoias · Pedreira, SP
           </p>
         </div>
       </div>

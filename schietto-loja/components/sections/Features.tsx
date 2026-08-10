@@ -32,7 +32,7 @@ const FEATURES: {
     icon: Gem,
     title: 'Qualidade que permanece',
     description:
-      'Decoração e semi jóias selecionadas para durar — beleza que acompanha o seu dia a dia por anos.',
+      'Decoração e semijoias selecionadas para durar — beleza que acompanha o seu dia a dia por anos.',
   },
   {
     icon: Building2,

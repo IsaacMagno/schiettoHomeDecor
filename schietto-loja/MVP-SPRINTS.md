@@ -1,4 +1,4 @@
-# MVP Sprints — Schiètto Home Decor & Semi Jóias
+# MVP Sprints — Schiètto Home Decor & Semijoias
 
 Roadmap enxuto para evoluir o site de **vitrine presencial** para posicionamento **premium** — narrativa, confiança, consultoria e conversão.
 
@@ -37,7 +37,7 @@ Header → Hero → Sobre → Consultoria → Galeria → Localização → Foot
 
 ### Fora do MVP (backlog)
 
-- [ ] Catálogos Home Decor / Semi Jóias reativados
+- [ ] Catálogos Home Decor / Semijoias reativados
 - [ ] Seção “Ambientes” (Sala, Quarto…) — exige fotos de composição
 - [ ] Depoimentos — **somente reviews reais** (Google / Instagram)
 - [ ] E-commerce, preços, entrega, “compra segura”
@@ -202,7 +202,7 @@ Sprints 1 e 2 podem rodar em paralelo.
 2. **Ambientes inspirados** — moodboards (Sala, Quarto, Lavabo…)
 3. **Foto real Cláudia** — substituir placeholder
 4. **Vídeo na galeria** — clips curtos entre fotos
-5. **Reativar vitrines** Home Decor / Semi Jóias
+5. **Reativar vitrines** Home Decor / Semijoias
 6. **Domínio customizado** + Google Business Profile
 
 ---
@@ -215,7 +215,7 @@ Sprints 1 e 2 podem rodar em paralelo.
 
 ### WhatsApp
 
-- URL: `https://wa.me/5519388937377`
+- URL: `https://wa.me/551938937377`
 - Telefone: (19) 3893-7377
 
 ### Endereço

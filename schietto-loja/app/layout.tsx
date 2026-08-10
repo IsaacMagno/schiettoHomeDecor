@@ -15,15 +15,15 @@ const bodyFont = Manrope({
 })
 
 export const metadata: Metadata = {
-  title: 'Schiètto Home Decor & Semi Jóias | Casarão Histórico · Pedreira, SP',
+  title: 'Schiètto Home Decor & Semijoias | Casarão Histórico · Pedreira, SP',
   description:
-    'Curadoria premium de home decor e semi jóias no andar superior de um casarão histórico em Pedreira. Inspire-se online e viva a experiência Schiètto na loja.',
+    'Curadoria premium de home decor e semijoias no andar superior de um casarão histórico em Pedreira. Inspire-se online e viva a experiência Schiètto na loja.',
   keywords:
-    'home decor pedreira, semi joias pedreira, decoração premium pedreira sp, loja schietto casarão, consultoria home decor',
+    'home decor pedreira, semijoias pedreira, decoração premium pedreira sp, loja schietto casarão, composições decoração',
   openGraph: {
-    title: 'Schiètto Home Decor & Semi Jóias',
+    title: 'Schiètto Home Decor & Semijoias',
     description:
-      'Elegância em cada detalhe — curadoria de decoração e semi jóias em um casarão histórico no centro de Pedreira, SP.',
+      'Elegância em cada detalhe — curadoria de decoração e semijoias em um casarão histórico no centro de Pedreira, SP.',
     type: 'website',
     locale: 'pt_BR',
   },

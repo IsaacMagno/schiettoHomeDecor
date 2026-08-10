@@ -6,7 +6,7 @@ import Experiences from '@/components/sections/Experiences'
 import Features from '@/components/sections/Features'
 import Consultant from '@/components/sections/Consultant'
 import Highlights from '@/components/sections/Highlights'
-import Values from '@/components/sections/Values'
+// import Values from '@/components/sections/Values'
 import Location from '@/components/sections/Location'
 import ClosingCTA from '@/components/sections/ClosingCTA'
 import BackToTop from '@/components/ui/BackToTop'
@@ -22,7 +22,7 @@ export default function Home() {
       <Features />
       <Consultant />
       <Highlights />
-      <Values />
+      {/* <Values /> */}
       <Location />
       <ClosingCTA />
       <Footer />

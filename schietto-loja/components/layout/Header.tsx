@@ -2,17 +2,16 @@
 
 import { useEffect, useState } from 'react'
 import { MessageCircle, Menu, X } from 'lucide-react'
+import { CAFE_URL, WHATSAPP_URL } from '@/lib/contact'
 
 const NAV_LINKS = [
   { label: 'Início', href: '#' },
   { label: 'Sobre', href: '#sobre' },
   { label: 'Experiências', href: '#experiencias' },
-  { label: 'Consultoria', href: '#consultoria' },
+  { label: 'Composições', href: '#composicoes' },
   { label: 'Galeria', href: '#galeria' },
   { label: 'Localização', href: '#localizacao' },
 ] as const
-
-const WHATSAPP_URL = 'https://wa.me/5519388937377'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -67,7 +66,7 @@ export default function Header() {
               solid ? 'text-loja-muted' : 'text-loja-offwhite/70'
             }`}
           >
-            Home Decor & Semi Jóias
+            Home Decor & Semijoias
           </p>
         </a>
 
@@ -80,21 +79,35 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Ação desktop */}
-        <a
-          href={WHATSAPP_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`hidden items-center gap-2 rounded-full border px-5 py-2 font-body text-sm font-medium transition-all duration-300 hover:border-loja-rosegold hover:bg-loja-rosegold hover:text-loja-offwhite focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2 lg:flex ${
-            solid
-              ? 'border-loja-charcoal/30 text-loja-charcoal'
-              : 'border-loja-offwhite/40 text-loja-offwhite'
-          }`}
-          aria-label="Fale conosco pelo WhatsApp"
-        >
-          <MessageCircle className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
-          <span>Fale Conosco</span>
-        </a>
+        {/* Ações desktop */}
+        <div className="hidden items-center gap-3 lg:flex">
+          <a
+            href={CAFE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-flex items-center gap-2 rounded-full border px-5 py-2 font-body text-sm font-medium transition-all duration-300 hover:border-loja-rosegold hover:bg-loja-rosegold hover:text-loja-offwhite focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2 ${
+              solid
+                ? 'border-loja-charcoal/30 text-loja-charcoal'
+                : 'border-loja-offwhite/40 text-loja-offwhite'
+            }`}
+          >
+            Caffè Schiètto
+          </a>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-flex items-center gap-2 rounded-full border px-5 py-2 font-body text-sm font-medium transition-all duration-300 hover:border-loja-rosegold hover:bg-loja-rosegold hover:text-loja-offwhite focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2 ${
+              solid
+                ? 'border-loja-charcoal/30 text-loja-charcoal'
+                : 'border-loja-offwhite/40 text-loja-offwhite'
+            }`}
+            aria-label="Fale conosco pelo WhatsApp"
+          >
+            <MessageCircle className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
+            <span>Fale Conosco</span>
+          </a>
+        </div>
 
         {/* Toggle mobile */}
         <button
@@ -124,7 +137,7 @@ export default function Header() {
       {/* Drawer mobile */}
       <div
         className={`overflow-hidden border-b border-loja-blush bg-loja-offwhite transition-all duration-300 ease-in-out lg:hidden ${
-          mobileOpen ? 'max-h-[520px] opacity-100' : 'max-h-0 border-b-0 opacity-0'
+          mobileOpen ? 'max-h-[560px] opacity-100' : 'max-h-0 border-b-0 opacity-0'
         }`}
         onClick={(e) => e.stopPropagation()}
       >
@@ -144,10 +157,19 @@ export default function Header() {
             </a>
           ))}
           <a
+            href={CAFE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 font-body text-lg text-loja-charcoal transition-colors hover:text-loja-rosegold"
+            onClick={closeMobile}
+          >
+            Caffè Schiètto
+          </a>
+          <a
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 flex items-center gap-2 font-body text-lg text-loja-rosegold"
+            className="mt-2 flex items-center gap-2 font-body text-lg text-loja-rosegold"
             onClick={closeMobile}
           >
             <MessageCircle className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />

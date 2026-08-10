@@ -1,31 +1,31 @@
 import Image from 'next/image'
 import Reveal from '@/components/ui/Reveal'
 import SplitText from '@/components/ui/SplitText'
-import { ALL_IMAGES } from '@/lib/gallery'
+import { VALUE_IMAGES } from '@/lib/gallery'
 
 const VALUES = [
   {
-    image: ALL_IMAGES[2],
+    image: VALUE_IMAGES[0],
     title: 'Elegância',
     description: 'Beleza que não precisa gritar para ser notada.',
   },
   {
-    image: ALL_IMAGES[8],
+    image: VALUE_IMAGES[1],
     title: 'Autenticidade',
     description: 'Peças e atendimento com verdade — schiètto, como o nome diz.',
   },
   {
-    image: ALL_IMAGES[19],
+    image: VALUE_IMAGES[2],
     title: 'Exclusividade',
     description: 'Curadoria pensada para quem busca o que poucos têm.',
   },
   {
-    image: ALL_IMAGES[32],
+    image: VALUE_IMAGES[3],
     title: 'Acolhimento',
     description: 'Uma loja que recebe como uma casa recebe visitas queridas.',
   },
   {
-    image: ALL_IMAGES[41],
+    image: VALUE_IMAGES[4],
     title: 'Inspiração',
     description: 'Cada visita é um convite para imaginar novos ambientes.',
   },
@@ -48,7 +48,6 @@ export default function Values() {
           </Reveal>
         </div>
 
-        {/* Desktop: 5 colunas em cards; mobile: lista com thumbnail */}
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {VALUES.map((value, index) => (
             <Reveal key={value.title} delay={index * 100}>

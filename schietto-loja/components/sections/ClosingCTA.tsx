@@ -1,9 +1,7 @@
 import { MessageCircle } from 'lucide-react'
 import Reveal from '@/components/ui/Reveal'
 import SplitText from '@/components/ui/SplitText'
-
-const WHATSAPP_URL =
-  'https://wa.me/5519388937377?text=Ol%C3%A1!%20Quero%20conhecer%20a%20Schi%C3%A8tto.'
+import { WHATSAPP_URL } from '@/lib/contact'
 
 export default function ClosingCTA() {
   return (

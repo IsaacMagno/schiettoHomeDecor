@@ -1,8 +1,7 @@
 'use client'
 
 import { MessageCircle } from 'lucide-react'
-
-const WHATSAPP_URL = 'https://wa.me/5519388937377'
+import { WHATSAPP_URL } from '@/lib/contact'
 
 export default function WhatsAppFloat() {
   return (

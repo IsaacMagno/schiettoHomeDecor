@@ -2,25 +2,35 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { ALL_IMAGES } from '@/lib/gallery'
-
-const SLIDES = [
-  { src: ALL_IMAGES[22], alt: 'Ambiente da Schiètto Home Decor em Pedreira' },
-  { src: ALL_IMAGES[5], alt: 'Peças de decoração em exposição na Schiètto' },
-  { src: ALL_IMAGES[27], alt: 'Semi jóias em destaque na vitrine da Schiètto' },
-  { src: ALL_IMAGES[10], alt: 'Detalhes de curadoria da loja Schiètto' },
-  { src: ALL_IMAGES[38], alt: 'Composição de peças no casarão da Schiètto' },
-] as const
+import { HERO_DESKTOP_SLIDES, HERO_MOBILE_SLIDES } from '@/lib/gallery'
 
 const AUTOPLAY_MS = 5000
 const SWIPE_THRESHOLD_PX = 50
 const HERO_VIDEO_SRC = '/video/hero.mp4'
 
+type HeroSlide = { src: string; alt: string }
+
 export default function HeroSlider() {
+  const [isDesktop, setIsDesktop] = useState(false)
   const [active, setActive] = useState(0)
   const [videoAvailable, setVideoAvailable] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const dragStartX = useRef<number | null>(null)
+
+  const slides: readonly HeroSlide[] = isDesktop
+    ? HERO_DESKTOP_SLIDES
+    : HERO_MOBILE_SLIDES
+
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 1024px)')
+    const sync = () => {
+      setIsDesktop(media.matches)
+      setActive(0)
+    }
+    sync()
+    media.addEventListener('change', sync)
+    return () => media.removeEventListener('change', sync)
+  }, [])
 
   useEffect(() => {
     let cancelled = false
@@ -38,10 +48,11 @@ export default function HeroSlider() {
 
   const restartAutoplay = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current)
+    if (slides.length <= 1) return
     timerRef.current = setInterval(() => {
-      setActive((current) => (current + 1) % SLIDES.length)
+      setActive((current) => (current + 1) % slides.length)
     }, AUTOPLAY_MS)
-  }, [])
+  }, [slides.length])
 
   useEffect(() => {
     if (videoAvailable) return
@@ -49,17 +60,20 @@ export default function HeroSlider() {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current)
     }
-  }, [videoAvailable, restartAutoplay])
+  }, [videoAvailable, restartAutoplay, slides])
+
+  useEffect(() => {
+    setActive((current) => Math.min(current, slides.length - 1))
+  }, [slides.length])
 
   const goTo = useCallback(
     (index: number) => {
-      setActive((index + SLIDES.length) % SLIDES.length)
+      setActive((index + slides.length) % slides.length)
       restartAutoplay()
     },
-    [restartAutoplay]
+    [restartAutoplay, slides.length]
   )
 
-  // Troca de slide apenas por arrasto (dedo ou mouse) — clique não avança
   const onPointerDown = useCallback((event: React.PointerEvent) => {
     dragStartX.current = event.clientX
   }, [])
@@ -110,10 +124,9 @@ export default function HeroSlider() {
       aria-roledescription="carrossel"
       aria-label="Imagens da loja Schiètto — arraste para navegar"
     >
-      {/* Slides com fade in/out suave + Ken Burns no slide ativo */}
-      {SLIDES.map((slide, index) => (
+      {slides.map((slide, index) => (
         <div
-          key={slide.src}
+          key={`${isDesktop ? 'desk' : 'mob'}-${slide.src}`}
           className={`absolute inset-0 transition-opacity duration-[1200ms] ease-in-out ${
             index === active ? 'z-[1] opacity-100' : 'z-0 opacity-0'
           }`}
@@ -121,7 +134,7 @@ export default function HeroSlider() {
         >
           <div
             className={`h-full w-full ${index === active ? 'animate-slide-zoom' : ''}`}
-            key={index === active ? `zoom-${active}` : `idle-${index}`}
+            key={index === active ? `zoom-${active}-${slide.src}` : `idle-${slide.src}`}
           >
             <Image
               src={slide.src}
@@ -136,36 +149,36 @@ export default function HeroSlider() {
         </div>
       ))}
 
-      {/* Gradientes de legibilidade (topo e base) */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-32 bg-gradient-to-b from-loja-dark/70 to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[320px] bg-gradient-to-t from-loja-dark/80 to-transparent lg:h-96" />
 
-      {/* Paginação: barras finas e minimalistas */}
-      <div className="absolute bottom-8 left-1/2 z-[3] flex -translate-x-1/2 items-center gap-3 lg:bottom-10">
-        {SLIDES.map((slide, index) => (
-          <button
-            key={slide.src}
-            type="button"
-            aria-label={`Ir para a imagem ${index + 1}`}
-            aria-current={index === active}
-            onClick={(event) => {
-              event.stopPropagation()
-              goTo(index)
-            }}
-            onPointerDown={(event) => event.stopPropagation()}
-            onPointerUp={(event) => event.stopPropagation()}
-            className="group py-2"
-          >
-            <span
-              className={`block h-[2px] w-9 rounded-full transition-all duration-500 sm:w-11 ${
-                index === active
-                  ? 'bg-loja-offwhite'
-                  : 'bg-loja-offwhite/35 group-hover:bg-loja-offwhite/60'
-              }`}
-            />
-          </button>
-        ))}
-      </div>
+      {slides.length > 1 && (
+        <div className="absolute bottom-8 left-1/2 z-[3] flex -translate-x-1/2 items-center gap-3 lg:bottom-10">
+          {slides.map((slide, index) => (
+            <button
+              key={`${isDesktop ? 'desk' : 'mob'}-dot-${slide.src}`}
+              type="button"
+              aria-label={`Ir para a imagem ${index + 1}`}
+              aria-current={index === active}
+              onClick={(event) => {
+                event.stopPropagation()
+                goTo(index)
+              }}
+              onPointerDown={(event) => event.stopPropagation()}
+              onPointerUp={(event) => event.stopPropagation()}
+              className="group py-2"
+            >
+              <span
+                className={`block h-[2px] w-9 rounded-full transition-all duration-500 sm:w-11 ${
+                  index === active
+                    ? 'bg-loja-offwhite'
+                    : 'bg-loja-offwhite/35 group-hover:bg-loja-offwhite/60'
+                }`}
+              />
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

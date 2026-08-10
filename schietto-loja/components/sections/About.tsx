@@ -23,7 +23,7 @@ const HIGHLIGHT_CARDS: {
     icon: Gem,
     title: 'Peças de alta qualidade',
     description:
-      'Decoração e semi jóias selecionadas para durar e encantar no dia a dia.',
+      'Decoração e semijoias selecionadas para durar e encantar no dia a dia.',
   },
   {
     icon: Building2,
@@ -56,7 +56,7 @@ export default function About() {
 
             <div className="space-y-6">
               <p className="font-body text-base font-light leading-relaxed text-loja-champagne/70 lg:text-lg">
-                A Schiètto Home Decor & Semi Jóias nasceu do desejo de reunir, em
+                A Schiètto Home Decor & Semijoias nasceu do desejo de reunir, em
                 um só lugar, objetos que traduzem estilo de vida — peças que
                 contam histórias, elevam ambientes e enriquecem o cotidiano
                 com delicadeza.

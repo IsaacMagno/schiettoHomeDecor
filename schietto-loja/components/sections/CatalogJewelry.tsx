@@ -5,14 +5,14 @@ import { JEWELRY_SHOWCASE } from '@/lib/gallery'
 
 export default function CatalogJewelry() {
   return (
-    <section id="semi-joias" className="bg-loja-dark py-28 lg:py-32">
+    <section id="semijoias" className="bg-loja-dark py-28 lg:py-32">
       <div className="mx-auto max-w-[1200px] px-6 lg:px-8">
         <AnimatedSectionHeader>
           <p className="font-body text-xs font-normal uppercase tracking-widest text-loja-champagne">
             Acessórios
           </p>
           <h2 className="mt-3 font-display text-4xl font-semibold text-loja-offwhite sm:text-5xl lg:text-6xl">
-            Semi Jóias
+            Semijoias
           </h2>
           <p className="mt-3 max-w-xl font-display text-xl italic text-loja-champagne/70 sm:text-2xl">
             Um pouco do que preparamos para você — os detalhes, você descobre na
@@ -24,7 +24,7 @@ export default function CatalogJewelry() {
         <div className="mt-12">
           <ShowcaseGrid
             items={JEWELRY_SHOWCASE}
-            altPrefix="Semi joia da loja Schiètto"
+            altPrefix="Semijoia da loja Schiètto"
             variant="dark"
             aspect="square"
           />

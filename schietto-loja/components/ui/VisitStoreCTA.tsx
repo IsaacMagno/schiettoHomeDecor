@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { WHATSAPP_URL } from '@/lib/contact'
 
 interface VisitStoreCTAProps {
   variant?: 'light' | 'dark'
@@ -27,12 +28,12 @@ export default function VisitStoreCTA({ variant = 'light' }: VisitStoreCTAProps)
           isDark ? 'text-loja-muted' : 'text-loja-charcoal'
         }`}
       >
-        Nossa consultora está pronta para orientar você — seja na loja ou por
-        WhatsApp. Cada peça merece tempo e atenção.
+        Na loja ou pelo WhatsApp — calma, atenção e o olhar de quem ama o que
+        faz.
       </p>
       <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
         <a
-          href="https://wa.me/5519388937377?text=Ol%C3%A1!%20Gostaria%20de%20ajuda%20para%20escolher%20pe%C3%A7as%20de%20decora%C3%A7%C3%A3o."
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
           className={`inline-flex items-center justify-center rounded-full px-7 py-3 font-body text-sm font-semibold transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2 ${
@@ -41,7 +42,7 @@ export default function VisitStoreCTA({ variant = 'light' }: VisitStoreCTAProps)
               : 'bg-loja-dark text-loja-offwhite hover:bg-loja-rosegold'
           }`}
         >
-          Fale com uma especialista
+          Fale conosco
         </a>
         <Link
           href="#localizacao"

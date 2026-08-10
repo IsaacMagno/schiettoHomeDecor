@@ -15,7 +15,7 @@ export default function Hero() {
 
         <SplitText
           as="h1"
-          text="Viva uma nova experiência em decoração e semi jóias"
+          text="Viva uma nova experiência em decoração e semijoias"
           delay={850}
           className="mt-4 max-w-3xl font-display text-3xl font-medium leading-[1.15] tracking-tight text-loja-offwhite sm:text-5xl lg:text-6xl"
         />

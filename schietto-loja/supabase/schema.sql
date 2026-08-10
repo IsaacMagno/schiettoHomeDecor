@@ -32,7 +32,7 @@ INSERT INTO products (name, description, segment, category, featured) VALUES
   ('Difusor de Ambiente', 'Difusor com varetas, 200ml, aroma floral sofisticado.', 'home_decor', 'objetos', false),
   ('Porta-retratos Dourado', 'Conjunto com 3 porta-retratos em metal dourado, tamanhos variados.', 'home_decor', 'objetos', false);
 
--- Seed: produtos Semi Jóias
+-- Seed: produtos Semijoias
 INSERT INTO products (name, description, segment, category, featured) VALUES
   ('Anel Solitário Banhado Ouro', 'Anel delicado com pedra zircônia, banho em ouro 18k.', 'semi_joia', 'aneis', true),
   ('Anel Minimalista Prata', 'Anel liso em prata 925, minimalista e versátil.', 'semi_joia', 'aneis', false),

@@ -1,7 +1,13 @@
 import AnimatedSectionHeader from '@/components/ui/AnimatedSectionHeader'
 import { Clock, MapPin, MessageCircle, Phone } from 'lucide-react'
+import {
+  CAFE_URL,
+  INSTAGRAM_URL,
+  PHONE_DISPLAY,
+  PHONE_TEL,
+  WHATSAPP_URL,
+} from '@/lib/contact'
 
-const WHATSAPP_URL = 'https://wa.me/5519388937377'
 const MAPS_URL = 'https://maps.google.com/?cid=8611185208223793702'
 
 const SCHEDULE = [
@@ -74,7 +80,9 @@ export default function Location() {
             <p className="mt-3 font-body text-sm italic text-loja-muted">
               Mesmo endereço do{' '}
               <a
-                href="#"
+                href={CAFE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-loja-rosegold underline-offset-2 transition-colors hover:underline"
               >
                 Caffè Schiètto
@@ -103,10 +111,10 @@ export default function Location() {
             </h2>
             <p className="mt-6 font-body text-sm font-medium text-loja-dark">
               <a
-                href="tel:+551938937377"
+                href={PHONE_TEL}
                 className="transition-colors hover:text-loja-rosegold"
               >
-                (19) 3893-7377
+                {PHONE_DISPLAY}
               </a>
             </p>
             <a
@@ -120,20 +128,12 @@ export default function Location() {
             </a>
             <div className="mt-8 space-y-2">
               <a
-                href="#"
+                href={INSTAGRAM_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block font-body text-sm text-loja-muted transition-colors hover:text-loja-rosegold"
               >
-                Instagram — @schiettoloja
-              </a>
-              <a
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block font-body text-sm text-loja-muted transition-colors hover:text-loja-rosegold"
-              >
-                Facebook — Schiètto Home Decor
+                Instagram — @schiettohomedecor_
               </a>
             </div>
           </div>
@@ -152,7 +152,7 @@ export default function Location() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Localização da Schiètto Home Decor & Semi Jóias em Pedreira, SP"
+              title="Localização da Schiètto Home Decor & Semijoias em Pedreira, SP"
             />
           </div>
           <p className="mt-4 text-center font-body text-sm text-loja-muted">

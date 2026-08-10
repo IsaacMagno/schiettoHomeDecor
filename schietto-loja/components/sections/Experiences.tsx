@@ -1,37 +1,31 @@
 import Image from 'next/image'
-import { ArrowRight } from 'lucide-react'
+import { Gem } from 'lucide-react'
 import Reveal from '@/components/ui/Reveal'
 import SplitText from '@/components/ui/SplitText'
 import SectionCard from '@/components/ui/SectionCard'
-import { ALL_IMAGES } from '@/lib/gallery'
+import { EXPERIENCE_IMAGES } from '@/lib/gallery'
 
 const EXPERIENCES = [
   {
-    image: ALL_IMAGES[5],
+    image: EXPERIENCE_IMAGES.homeDecor,
     alt: 'Peças de home decor selecionadas na Schiètto',
     title: 'Home Decor',
     description:
       'Objetos que elevam ambientes — vasos, esculturas, aromas e peças de composição escolhidas uma a uma.',
-    cta: 'Explore o universo decor',
-    href: '#galeria',
   },
   {
-    image: ALL_IMAGES[27],
-    alt: 'Semi jóias em exposição na Schiètto',
-    title: 'Semi Jóias',
+    image: EXPERIENCE_IMAGES.semijoias,
+    alt: 'Semijoias em exposição na Schiètto',
+    title: 'Semijoias',
     description:
       'Acessórios delicados e atemporais para o dia a dia e para ocasiões que merecem brilho.',
-    cta: 'Descubra as semi jóias',
-    href: '#galeria',
   },
   {
-    image: ALL_IMAGES[15],
-    alt: 'Ambiente acolhedor da loja Schiètto no casarão histórico',
-    title: 'Consultoria Personalizada',
+    image: EXPERIENCE_IMAGES.composicoes,
+    alt: 'Composições de peças na Schiètto',
+    title: 'Composições',
     description:
-      'Uma especialista para orientar suas escolhas — harmonia, elegância e personalidade em cada indicação.',
-    cta: 'Conheça a consultoria',
-    href: '#consultoria',
+      'Peças reunidas com olhar atento — combinações que criam harmonia e dão personalidade ao seu ambiente.',
   },
 ] as const
 
@@ -46,7 +40,7 @@ export default function Experiences() {
         />
         <Reveal delay={150}>
           <p className="max-w-[72ch] font-body text-base font-light leading-relaxed text-loja-charcoal/75">
-            Decoração, semi jóias e um atendimento que entende o seu estilo —
+            Decoração, semijoias e um atendimento que entende o seu estilo —
             dois universos e um mesmo olhar, em um espaço feito para inspirar.
           </p>
         </Reveal>
@@ -55,18 +49,28 @@ export default function Experiences() {
       <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3">
         {EXPERIENCES.map((item, index) => (
           <Reveal key={item.title} delay={index * 150}>
-            <a
-              href={item.href}
-              className="group grid h-full gap-6 rounded-lg border border-loja-blush/60 p-4 transition-colors duration-500 hover:border-loja-rosegold"
-            >
+            <div className="group grid h-full gap-6 rounded-lg border border-loja-blush/60 p-4 transition-colors duration-500 hover:border-loja-rosegold">
               <div className="relative aspect-[5/4] w-full overflow-hidden rounded-lg bg-loja-champagne/40">
-                <Image
-                  src={item.image}
-                  alt={item.alt}
-                  fill
-                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
+                {item.image ? (
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                ) : (
+                  <div className="flex h-full flex-col items-center justify-center gap-3 p-6 text-center">
+                    <Gem
+                      className="h-8 w-8 text-loja-rosegold"
+                      strokeWidth={1.25}
+                      aria-hidden="true"
+                    />
+                    <p className="font-body text-xs uppercase tracking-[0.25em] text-loja-muted">
+                      Em breve
+                    </p>
+                  </div>
+                )}
               </div>
 
               <div className="flex flex-col gap-3 pb-2">
@@ -76,12 +80,8 @@ export default function Experiences() {
                 <p className="font-body text-sm font-light leading-relaxed text-loja-charcoal/75">
                   {item.description}
                 </p>
-                <span className="mt-auto inline-flex items-center gap-2 pt-2 font-body text-sm font-medium text-loja-rosegold transition-all duration-300 group-hover:gap-3">
-                  {item.cta}
-                  <ArrowRight className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
-                </span>
               </div>
-            </a>
+            </div>
           </Reveal>
         ))}
       </div>
