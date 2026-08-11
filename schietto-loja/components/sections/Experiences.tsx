@@ -12,6 +12,7 @@ const EXPERIENCES = [
     title: 'Home Decor',
     description:
       'Objetos que elevam ambientes — vasos, esculturas, aromas e peças de composição escolhidas uma a uma.',
+    imageClass: 'object-cover',
   },
   {
     image: EXPERIENCE_IMAGES.semijoias,
@@ -19,6 +20,8 @@ const EXPERIENCES = [
     title: 'Semijoias',
     description:
       'Acessórios delicados e atemporais para o dia a dia e para ocasiões que merecem brilho.',
+    // Mobile: sobe o foco para a joia não cortar na base do card 5:4
+    imageClass: 'object-cover object-[center_88%] md:object-[center_72%]',
   },
   {
     image: EXPERIENCE_IMAGES.composicoes,
@@ -26,6 +29,7 @@ const EXPERIENCES = [
     title: 'Composições',
     description:
       'Peças reunidas com olhar atento — combinações que criam harmonia e dão personalidade ao seu ambiente.',
+    imageClass: 'object-cover',
   },
 ] as const
 
@@ -56,7 +60,7 @@ export default function Experiences() {
                     src={item.image}
                     alt={item.alt}
                     fill
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    className={`${item.imageClass} transition-transform duration-700 ease-out group-hover:scale-105`}
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 ) : (
