@@ -1,8 +1,8 @@
-import Image from 'next/image'
 import { Gem } from 'lucide-react'
 import Reveal from '@/components/ui/Reveal'
 import SplitText from '@/components/ui/SplitText'
 import SectionCard from '@/components/ui/SectionCard'
+import ProgressiveImage from '@/components/ui/ProgressiveImage'
 import { EXPERIENCE_IMAGES } from '@/lib/gallery'
 
 const EXPERIENCES = [
@@ -56,7 +56,7 @@ export default function Experiences() {
             <div className="group grid h-full gap-6 rounded-lg border border-loja-blush/60 p-4 transition-colors duration-500 hover:border-loja-rosegold">
               <div className="relative aspect-[5/4] w-full overflow-hidden rounded-lg bg-loja-champagne/40">
                 {item.image ? (
-                  <Image
+                  <ProgressiveImage
                     src={item.image}
                     alt={item.alt}
                     fill

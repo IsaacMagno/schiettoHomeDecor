@@ -1,8 +1,8 @@
-import Image from 'next/image'
 import { MessageCircle } from 'lucide-react'
 import Reveal from '@/components/ui/Reveal'
 import SplitText from '@/components/ui/SplitText'
 import SectionCard from '@/components/ui/SectionCard'
+import ProgressiveImage from '@/components/ui/ProgressiveImage'
 import { COMPOSICAO_IMAGE } from '@/lib/gallery'
 import { WHATSAPP_URL } from '@/lib/contact'
 
@@ -12,7 +12,7 @@ export default function Consultant() {
       <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
         <Reveal className="w-full max-w-sm shrink-0">
           <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-loja-champagne/40">
-            <Image
+            <ProgressiveImage
               src={COMPOSICAO_IMAGE}
               alt="Composição de peças Schiètto — mesa posta com orquídeas, cristais e porcelanas"
               fill

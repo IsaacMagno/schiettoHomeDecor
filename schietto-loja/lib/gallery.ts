@@ -1,59 +1,73 @@
 import type { ShowcaseItem } from '@/types/showcase'
 
 /** Reservada exclusivamente para a seção "Peças que se encontram" — não reutilizar. */
-export const COMPOSICAO_IMAGE = '/images/vertical/IMG_6890.webp'
+export const COMPOSICAO_IMAGE = '/images/vertical/IMG_9166.webp'
 
 const v = (name: string) => `/images/vertical/${name}.webp`
 const h = (name: string) => `/images/horizontal/${name}.webp`
 
-/** Hero desktop: por enquanto só IMG_6881 (slider mantido para futuras fotos) */
+/** Hero desktop: 3 atmosferas landscape da loja */
 export const HERO_DESKTOP_SLIDES = [
-  { src: h('IMG_6881'), alt: 'Detalhes e peças no casarão da Schiètto' },
+  { src: h('IMG_9106'), alt: 'Showroom da Schiètto Home Decor em Pedreira' },
+  {
+    src: h('IMG_9163'),
+    alt: 'Mesa posta com louças brancas, ouro e verde na Schiètto',
+  },
+  {
+    src: h('IMG_9167'),
+    alt: 'Ambiente Schiètto Caffé com mesa posta e curadoria',
+  },
 ] as const
 
 /**
- * Verticais usadas uma única vez (exceto COMPOSICAO_IMAGE).
+ * Verticais usadas uma única vez (exceto COMPOSICAO_IMAGE, que é exclusiva).
  * Ordem: hero mobile → experiências → valores → galeria.
  */
 export const HERO_MOBILE_SLIDES = [
-  { src: v('IMG_6878'), alt: 'Ambiente da Schiètto Home Decor em Pedreira' },
   {
-    src: v('IMG_6895_composicao'),
-    alt: 'Composição de peças no casarão da Schiètto',
+    src: v('IMG_9170'),
+    alt: 'Mesa com orquídeas e louças na Schiètto Home Decor',
   },
-  { src: v('IMG_6896'), alt: 'Detalhes de curadoria da loja Schiètto' },
+  {
+    src: v('IMG_9136'),
+    alt: 'Vasos dourados e xícaras em composição na loja',
+  },
+  {
+    src: v('IMG_9157'),
+    alt: 'Mesa elegante com orquídeas e cristalaria',
+  },
 ] as const
 
 export const EXPERIENCE_IMAGES = {
-  homeDecor: v('IMG_6878'),
-  semijoias: v('IMG_6858_semijoias'),
-  composicoes: v('IMG_6883'),
+  homeDecor: v('IMG_9160'),
+  semijoias: v('IMG_9124'),
+  composicoes: v('IMG_9164'),
 } as const
 
 export const VALUE_IMAGES = [
-  v('IMG_6859'),
-  v('IMG_6860'),
-  v('IMG_6861'),
-  v('IMG_6865'),
-  v('IMG_6866'),
+  v('IMG_9120'),
+  v('IMG_9142'),
+  v('IMG_9155'),
+  v('IMG_9171'),
+  v('IMG_9151'),
 ] as const
 
 export const HIGHLIGHT_IMAGES = [
-  v('IMG_6869'),
-  v('IMG_6870'),
-  v('IMG_6874'),
-  v('IMG_6876'),
-  v('IMG_6877'),
-  v('IMG_6856'),
-  v('IMG_6882'),
-  v('IMG_6857'),
-  v('IMG_6884'),
-  v('IMG_6885'),
-  v('IMG_6886'),
-  v('IMG_6887'),
-  v('IMG_6888'),
-  v('IMG_6894'),
-  v('IMG_6897'),
+  v('IMG_9105'),
+  v('IMG_9118'),
+  v('IMG_9119'),
+  v('IMG_9122'),
+  v('IMG_9128'),
+  v('IMG_9130'),
+  v('IMG_9133'),
+  v('IMG_9138'),
+  v('IMG_9140'),
+  v('IMG_9152'),
+  v('IMG_9156'),
+  v('IMG_9161'),
+  v('IMG_9169'),
+  v('IMG_9143'),
+  v('IMG_9162'),
 ] as const
 
 export function toShowcaseItems(

@@ -27,3 +27,11 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# camera originals / video (keep webp only in repo)
+*.DNG
+*.HEIC
+*.MOV
+*.dng
+*.heic
+*.mov

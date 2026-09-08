@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import ProgressiveImage from '@/components/ui/ProgressiveImage'
 
 interface ProductImageProps {
   src: string
@@ -14,7 +14,7 @@ export default function ProductImage({
   priority = false,
 }: ProductImageProps) {
   return (
-    <Image
+    <ProgressiveImage
       src={src}
       alt={alt}
       fill

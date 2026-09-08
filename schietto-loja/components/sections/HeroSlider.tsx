@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
+import ProgressiveImage from '@/components/ui/ProgressiveImage'
 import { HERO_DESKTOP_SLIDES, HERO_MOBILE_SLIDES } from '@/lib/gallery'
 
 const AUTOPLAY_MS = 5000
@@ -136,7 +136,7 @@ export default function HeroSlider() {
             className={`h-full w-full ${index === active ? 'animate-slide-zoom' : ''}`}
             key={index === active ? `zoom-${active}-${slide.src}` : `idle-${slide.src}`}
           >
-            <Image
+            <ProgressiveImage
               src={slide.src}
               alt={slide.alt}
               fill
@@ -144,6 +144,8 @@ export default function HeroSlider() {
               draggable={false}
               className="object-cover"
               sizes="100vw"
+              showSpinner={index === active}
+              skeletonTone="dark"
             />
           </div>
         </div>
