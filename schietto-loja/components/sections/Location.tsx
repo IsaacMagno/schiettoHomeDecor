@@ -3,12 +3,11 @@ import { Clock, MapPin, MessageCircle, Phone } from 'lucide-react'
 import {
   CAFE_URL,
   INSTAGRAM_URL,
+  MAPS_URL,
   PHONE_DISPLAY,
   PHONE_TEL,
   WHATSAPP_URL,
 } from '@/lib/contact'
-
-const MAPS_URL = 'https://maps.google.com/?cid=8611185208223793702'
 
 const SCHEDULE = [
   { label: 'Segunda a Sexta', value: '09h00 às 18h00' },
@@ -152,7 +151,7 @@ export default function Location() {
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Localização da Schiètto Home Decor & Semijoias em Pedreira, SP"
+              title="Localização da Schiètto Home Decor em Pedreira, SP"
             />
           </div>
           <p className="mt-4 text-center font-body text-sm text-loja-muted">

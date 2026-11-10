@@ -69,7 +69,7 @@ export default function Header() {
                 solid ? 'text-loja-muted' : 'text-loja-offwhite/70'
               }`}
             >
-              Home Decor & Semijoias
+              Home Decor de Luxo
             </p>
           </a>
 

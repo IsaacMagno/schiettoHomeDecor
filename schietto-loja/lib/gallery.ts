@@ -6,35 +6,32 @@ export const COMPOSICAO_IMAGE = '/images/vertical/IMG_9166.webp'
 const v = (name: string) => `/images/vertical/${name}.webp`
 const h = (name: string) => `/images/horizontal/${name}.webp`
 
-/** Hero desktop: 3 atmosferas landscape da loja */
-export const HERO_DESKTOP_SLIDES = [
-  { src: h('IMG_9106'), alt: 'Showroom da Schiètto Home Decor em Pedreira' },
-  {
-    src: h('IMG_9163'),
-    alt: 'Mesa posta com louças brancas, ouro e verde na Schiètto',
-  },
-  {
-    src: h('IMG_9167'),
-    alt: 'Ambiente Schiètto Caffé com mesa posta e curadoria',
-  },
-] as const
+/**
+ * Vídeo opcional do Hero. Para ativar: coloque o arquivo em public/video/hero.mp4
+ * e troque `null` por '/video/hero.mp4'. Sem vídeo, o Hero usa o carrossel de fotos.
+ */
+export const HERO_VIDEO_SRC: string | null = null
 
 /**
- * Verticais usadas uma única vez (exceto COMPOSICAO_IMAGE, que é exclusiva).
- * Ordem: hero mobile → experiências → valores → galeria.
+ * Hero: cada slide tem uma foto horizontal (desktop) e uma vertical (celular).
+ * O navegador escolhe a certa pelo tamanho da tela (<picture>), então a imagem
+ * principal já é a correta no primeiro carregamento.
  */
-export const HERO_MOBILE_SLIDES = [
+export const HERO_SLIDES = [
   {
-    src: v('IMG_9170'),
-    alt: 'Mesa com orquídeas e louças na Schiètto Home Decor',
+    desktop: h('IMG_9106'),
+    mobile: v('IMG_9170'),
+    alt: 'Showroom da Schiètto Home Decor em Pedreira, com mesas postas, orquídeas e peças de decoração',
   },
   {
-    src: v('IMG_9136'),
-    alt: 'Vasos dourados e xícaras em composição na loja',
+    desktop: h('IMG_9163'),
+    mobile: v('IMG_9136'),
+    alt: 'Mesa posta com louças brancas, detalhes dourados e vasos na Schiètto',
   },
   {
-    src: v('IMG_9157'),
-    alt: 'Mesa elegante com orquídeas e cristalaria',
+    desktop: h('IMG_9167'),
+    mobile: v('IMG_9157'),
+    alt: 'Mesa elegante com orquídeas, cristais e porcelanas na Schiètto',
   },
 ] as const
 
@@ -43,14 +40,6 @@ export const EXPERIENCE_IMAGES = {
   semijoias: v('IMG_9124'),
   composicoes: v('IMG_9164'),
 } as const
-
-export const VALUE_IMAGES = [
-  v('IMG_9120'),
-  v('IMG_9142'),
-  v('IMG_9155'),
-  v('IMG_9171'),
-  v('IMG_9151'),
-] as const
 
 export const HIGHLIGHT_IMAGES = [
   v('IMG_9105'),
@@ -81,13 +70,3 @@ export function toShowcaseItems(
 }
 
 export const HIGHLIGHT_SHOWCASE = toShowcaseItems(HIGHLIGHT_IMAGES, 'highlight')
-
-/** Compatibilidade com catálogos desativados (fora do page.tsx) */
-export const HOME_SHOWCASE = toShowcaseItems(
-  HIGHLIGHT_IMAGES.slice(0, 8),
-  'home'
-)
-export const JEWELRY_SHOWCASE = toShowcaseItems(
-  HIGHLIGHT_IMAGES.slice(8),
-  'jewelry'
-)
