@@ -1,4 +1,6 @@
+import Link from 'next/link'
 import { MessageCircle, MapPin, Phone } from 'lucide-react'
+import CookiePreferencesButton from '@/components/analytics/CookiePreferencesButton'
 import {
   CAFE_URL,
   INSTAGRAM_URL,
@@ -53,7 +55,7 @@ export default function Footer() {
               <span className="text-loja-rosegold">.</span>
             </p>
             <p className="mt-3 font-body text-sm font-light text-loja-champagne/70">
-              Home Decor & Semijoias
+              Home Decor de Luxo
             </p>
             <p className="mt-1 font-body text-xs font-light text-loja-muted">
               Pedreira, SP · Desde 2023
@@ -149,7 +151,16 @@ export default function Footer() {
 
         <div className="mt-16 border-t border-loja-charcoal pt-8">
           <p className="text-center font-body text-xs font-light text-loja-muted">
-            © 2026 Schiètto Home Decor & Semijoias · Pedreira, SP
+            © 2026 Schiètto Home Decor · Pedreira, SP
+          </p>
+          <p className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-center font-body text-xs font-light text-loja-muted">
+            <Link
+              href="/privacidade"
+              className="transition-colors duration-300 hover:text-loja-offwhite focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2"
+            >
+              Política de Privacidade
+            </Link>
+            <CookiePreferencesButton />
           </p>
         </div>
       </div>
