@@ -11,10 +11,12 @@ import Location from '@/components/sections/Location'
 import ClosingCTA from '@/components/sections/ClosingCTA'
 import BackToTop from '@/components/ui/BackToTop'
 import WhatsAppFloat from '@/components/ui/WhatsAppFloat'
+import LocalBusinessJsonLd from '@/components/seo/LocalBusinessJsonLd'
 
 export default function Home() {
   return (
     <main className="bg-loja-offwhite">
+      <LocalBusinessJsonLd />
       <Header />
       <Hero />
       <Intro />

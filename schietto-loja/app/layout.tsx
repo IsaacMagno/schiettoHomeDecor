@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Script from 'next/script'
 import { Jost, Manrope } from 'next/font/google'
 import './globals.css'
+import { SITE_URL } from '@/lib/contact'
 
 const displayFont = Jost({
   subsets: ['latin'],
@@ -15,18 +16,36 @@ const bodyFont = Manrope({
   variable: '--font-body',
 })
 
+const OG_TITLE = 'Schiètto Home Decor & Semijoias'
+const OG_DESCRIPTION =
+  'Elegância em cada detalhe — curadoria de decoração e semijoias em um casarão histórico no centro de Pedreira, SP.'
+const OG_IMAGE = {
+  url: '/og-image.jpg',
+  width: 1200,
+  height: 630,
+  alt: 'Showroom da Schiètto Home Decor & Semijoias em Pedreira, SP',
+}
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: 'Schiètto Home Decor & Semijoias | Casarão Histórico · Pedreira, SP',
   description:
     'Curadoria premium de home decor e semijoias no andar superior de um casarão histórico em Pedreira. Inspire-se online e viva a experiência Schiètto na loja.',
-  keywords:
-    'home decor pedreira, semijoias pedreira, decoração premium pedreira sp, loja schietto casarão, composições decoração',
+  alternates: { canonical: '/' },
   openGraph: {
-    title: 'Schiètto Home Decor & Semijoias',
-    description:
-      'Elegância em cada detalhe — curadoria de decoração e semijoias em um casarão histórico no centro de Pedreira, SP.',
+    title: OG_TITLE,
+    description: OG_DESCRIPTION,
+    url: '/',
+    siteName: 'Schiètto Home Decor & Semijoias',
     type: 'website',
     locale: 'pt_BR',
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: OG_TITLE,
+    description: OG_DESCRIPTION,
+    images: [OG_IMAGE.url],
   },
 }
 
