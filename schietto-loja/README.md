@@ -58,6 +58,30 @@ WhatsApp, telefone, mapa, Instagram e Caffè Schiètto viram eventos no Clarity
 `cafe_click`). O texto da política fica em `app/privacidade/page.tsx` — se o
 site passar a coletar mais dados, atualize-o.
 
+## Anúncios (Meta) e WhatsApp
+
+O objetivo do site é levar a pessoa ao **WhatsApp** (pedidos e reservas). Por
+isso o botão principal do topo, a barra fixa do celular, o botão do canto e o
+fechamento da página abrem o WhatsApp.
+
+- **Mensagem por assunto:** os cards "Home Decor", "Semijoias e Pedras",
+  "Composições" e "Casa e Conforto" abrem o WhatsApp com o assunto já escrito
+  (`WHATSAPP_MESSAGES` em `lib/contact.ts`).
+- **Origem do anúncio:** use links com UTM no anúncio, por exemplo
+  `https://homedecor.schietto.com.br/?utm_source=meta&utm_campaign=video_natal`.
+  O site acrescenta `(origem: meta / video_natal)` à mensagem do WhatsApp, e a
+  loja vê de qual campanha o contato veio. Não usa cookies.
+- **Pixel da Meta (opcional):** na Vercel, em *Settings → Environment
+  Variables*, crie `NEXT_PUBLIC_META_PIXEL_ID` com o ID do Pixel e faça um novo
+  deploy. O Pixel só carrega depois do aceite de cookies e registra `PageView`,
+  `Contact` (WhatsApp/telefone) e `FindLocation` (mapa). Sem o ID, ele não existe.
+- **Vídeo do anúncio no topo:** coloque o mesmo vídeo em `public/video/hero.mp4`
+  e troque `HERO_VIDEO_SRC` em `lib/gallery.ts` (veja `public/video/README.md`).
+  Vídeo igual ao do anúncio faz a pessoa reconhecer o que clicou.
+- **"Aberto agora":** calculado no horário de Brasília por
+  `components/ui/OpenNow.tsx`; mantenha os horários em sincronia com os outros
+  arquivos citados acima.
+
 ## SEO
 
 Metadados e Open Graph em `app/layout.tsx`; `sitemap.xml` e `robots.txt` são
