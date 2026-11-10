@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { MessageCircle, MapPin, Phone } from 'lucide-react'
 import CookiePreferencesButton from '@/components/analytics/CookiePreferencesButton'
 import {
@@ -132,7 +132,7 @@ export default function Footer() {
                 <p className="text-loja-offwhite">09h00 às 18h00</p>
               </li>
               <li>
-                <p>Sábado e Domingo</p>
+                <p>Sábado, domingo e feriados</p>
                 <p className="text-loja-offwhite">08h30 às 18h00</p>
               </li>
             </ul>
