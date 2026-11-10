@@ -12,7 +12,9 @@ interface SplitTextProps {
 }
 
 /**
- * Revela o texto palavra por palavra (efeito "split"), quando entra na viewport.
+ * Revela o texto palavra por palavra (efeito "split"). A animação é CSS
+ * (keyframes `splitReveal`), então o texto aparece mesmo antes de o JavaScript
+ * hidratar e respeita `prefers-reduced-motion`.
  */
 export default function SplitText({
   text,
@@ -34,15 +36,18 @@ export default function SplitText({
         >
           <span
             className="inline-block will-change-transform"
-            style={{
-              transform: inView ? 'translateY(0)' : 'translateY(110%)',
-              transition: `transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) ${
-                delay + index * 60
-              }ms`,
-            }}
+            style={
+              inView
+                ? {
+                    animation: `splitReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) ${
+                      delay + index * 60
+                    }ms both`,
+                  }
+                : { transform: 'translateY(110%)' }
+            }
           >
             {word}
-            {index < words.length - 1 ? '\u00A0' : ''}
+            {index < words.length - 1 ? ' ' : ''}
           </span>
         </span>
       ))}
