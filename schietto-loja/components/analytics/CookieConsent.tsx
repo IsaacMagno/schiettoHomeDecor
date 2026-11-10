@@ -6,15 +6,31 @@ import Link from 'next/link'
 const STORAGE_KEY = 'schietto-cookie-consent'
 const CLARITY_ID = 'yxq60pp9tt'
 
+/**
+ * ID do Pixel da Meta (Facebook/Instagram). Configure NEXT_PUBLIC_META_PIXEL_ID
+ * na Vercel (Settings → Environment Variables) e faça um novo deploy. Sem ID, o
+ * Pixel simplesmente não existe no site.
+ */
+const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID
+
 /** Disparado pelo link "Preferências de cookies" do rodapé para reabrir o aviso. */
 export const OPEN_COOKIE_PREFERENCES_EVENT = 'schietto:cookie-preferences'
 
 type Consent = 'granted' | 'denied'
 type ClarityFn = ((...args: unknown[]) => void) & { q?: unknown[][] }
+type FbqFn = ((...args: unknown[]) => void) & {
+  queue?: unknown[]
+  push?: unknown
+  loaded?: boolean
+  version?: string
+  callMethod?: (...args: unknown[]) => void
+}
 
 declare global {
   interface Window {
     clarity?: ClarityFn
+    fbq?: FbqFn
+    _fbq?: FbqFn
   }
 }
 
@@ -51,13 +67,39 @@ function loadClarity() {
   document.head.appendChild(script)
 }
 
-/** Nome do evento do Clarity para os links que levam à conversão (ou null). */
-function eventNameFor(href: string): string | null {
-  if (href.startsWith('tel:')) return 'telefone_click'
-  if (href.includes('wa.me/')) return 'whatsapp_click'
-  if (href.includes('maps.google.com')) return 'maps_click'
-  if (href.includes('instagram.com')) return 'instagram_click'
-  if (href.includes('cafe.schietto.com.br')) return 'cafe_click'
+/** Carrega o Pixel da Meta (só se houver ID e depois do aceite). */
+function loadMetaPixel(pixelId: string) {
+  if (document.getElementById('meta-pixel')) return
+  if (!window.fbq) {
+    const fbq: FbqFn = (...args) => {
+      if (fbq.callMethod) fbq.callMethod(...args)
+      else (fbq.queue as unknown[]).push(args)
+    }
+    fbq.push = fbq
+    fbq.loaded = true
+    fbq.version = '2.0'
+    fbq.queue = []
+    window.fbq = fbq
+    window._fbq = fbq
+  }
+  const script = document.createElement('script')
+  script.id = 'meta-pixel'
+  script.async = true
+  script.src = 'https://connect.facebook.net/en_US/fbevents.js'
+  document.head.appendChild(script)
+  window.fbq('init', pixelId)
+  window.fbq('track', 'PageView')
+}
+
+type Conversion = { clarity: string; meta?: string }
+
+/** Evento (Clarity e Meta) para os links que levam à conversão, ou null. */
+function conversionFor(href: string): Conversion | null {
+  if (href.startsWith('tel:')) return { clarity: 'telefone_click', meta: 'Contact' }
+  if (href.includes('wa.me/')) return { clarity: 'whatsapp_click', meta: 'Contact' }
+  if (href.includes('maps.google.com')) return { clarity: 'maps_click', meta: 'FindLocation' }
+  if (href.includes('instagram.com')) return { clarity: 'instagram_click' }
+  if (href.includes('cafe.schietto.com.br')) return { clarity: 'cafe_click' }
   return null
 }
 
@@ -65,11 +107,14 @@ export default function CookieConsent() {
   const [consent, setConsent] = useState<Consent | null | undefined>(undefined)
   const [reopened, setReopened] = useState(false)
 
-  // Lê a escolha salva; se já aceitou antes, carrega o Clarity.
+  // Lê a escolha salva; se já aceitou antes, carrega as ferramentas.
   useEffect(() => {
     const saved = readConsent()
     setConsent(saved)
-    if (saved === 'granted') loadClarity()
+    if (saved === 'granted') {
+      loadClarity()
+      if (META_PIXEL_ID) loadMetaPixel(META_PIXEL_ID)
+    }
   }, [])
 
   useEffect(() => {
@@ -86,8 +131,10 @@ export default function CookieConsent() {
       const target = event.target as Element | null
       const href = target?.closest?.('a')?.getAttribute('href')
       if (!href) return
-      const name = eventNameFor(href)
-      if (name) window.clarity?.('event', name)
+      const conversion = conversionFor(href)
+      if (!conversion) return
+      window.clarity?.('event', conversion.clarity)
+      if (conversion.meta) window.fbq?.('track', conversion.meta)
     }
     document.addEventListener('click', onClick, true)
     return () => document.removeEventListener('click', onClick, true)
@@ -99,10 +146,12 @@ export default function CookieConsent() {
     setReopened(false)
     if (value === 'granted') {
       loadClarity()
+      if (META_PIXEL_ID) loadMetaPixel(META_PIXEL_ID)
     } else {
-      // Se o Clarity já estava ativo nesta visita, pede para parar de coletar.
+      // Se as ferramentas já estavam ativas nesta visita, pede para pararem.
       try {
         window.clarity?.('consent', false)
+        window.fbq?.('consent', 'revoke')
       } catch {
         // sem efeito: a escolha já está salva para as próximas visitas
       }
@@ -116,12 +165,13 @@ export default function CookieConsent() {
     <div
       role="dialog"
       aria-label="Aviso de cookies"
-      className="fixed inset-x-3 bottom-3 z-[80] rounded-2xl bg-loja-dark p-5 text-loja-offwhite shadow-2xl sm:inset-x-auto sm:bottom-24 sm:right-6 sm:max-w-sm"
+      className="fixed inset-x-3 top-[84px] z-[80] rounded-2xl bg-loja-dark p-4 text-loja-offwhite shadow-2xl sm:inset-x-auto sm:bottom-24 sm:right-6 sm:top-auto sm:max-w-sm sm:p-5"
     >
       <p className="font-body text-sm font-light leading-relaxed text-loja-champagne/90">
-        Usamos o Microsoft Clarity para entender como o site é usado (cliques e
-        navegação, sem identificar você) e melhorar a sua visita. Só ativamos
-        com o seu aceite.{' '}
+        {META_PIXEL_ID
+          ? 'Usamos o Microsoft Clarity e o Pixel da Meta para entender como o site é usado e medir se nossos anúncios trazem contatos, sem identificar você pelo nome. '
+          : 'Usamos o Microsoft Clarity para entender como o site é usado (cliques e navegação, sem identificar você) e melhorar a sua visita. '}
+        Só ativamos com o seu aceite.{' '}
         <Link
           href="/privacidade"
           className="text-loja-offwhite underline underline-offset-2 hover:text-loja-rosegold"

@@ -1,14 +1,18 @@
-import { Sofa } from 'lucide-react'
+import { ArrowUpRight, Sofa } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import Reveal from '@/components/ui/Reveal'
 import SplitText from '@/components/ui/SplitText'
 import SectionCard from '@/components/ui/SectionCard'
 import ProgressiveImage from '@/components/ui/ProgressiveImage'
 import { EXPERIENCE_IMAGES } from '@/lib/gallery'
+import { WHATSAPP_MESSAGES, whatsappUrl } from '@/lib/contact'
 
 type Experience = {
   title: string
   description: string
+  /** Mensagem que já chega escrita no WhatsApp */
+  message: string
+  cta: string
   /** Com foto: image + alt (+ imageClass). Sem foto: icon + caption. */
   image?: string
   alt?: string
@@ -25,6 +29,8 @@ const EXPERIENCES: readonly Experience[] = [
     description:
       'Objetos que elevam ambientes — vasos, esculturas, aromas e peças de composição escolhidas uma a uma.',
     imageClass: 'object-cover',
+    message: WHATSAPP_MESSAGES.decoracao,
+    cta: 'Perguntar sobre decoração',
   },
   {
     image: EXPERIENCE_IMAGES.semijoias,
@@ -34,6 +40,8 @@ const EXPERIENCES: readonly Experience[] = [
       'Semijoias e pedras preciosas delicadas e atemporais, para o dia a dia e para ocasiões que merecem brilho.',
     // Mobile: sobe o foco para a joia não cortar na base do card 5:4
     imageClass: 'object-cover object-[center_88%] md:object-[center_72%]',
+    message: WHATSAPP_MESSAGES.semijoias,
+    cta: 'Perguntar sobre semijoias',
   },
   {
     image: EXPERIENCE_IMAGES.composicoes,
@@ -42,6 +50,8 @@ const EXPERIENCES: readonly Experience[] = [
     description:
       'Peças reunidas com olhar atento — combinações que criam harmonia e dão personalidade ao seu ambiente.',
     imageClass: 'object-cover',
+    message: WHATSAPP_MESSAGES.composicoes,
+    cta: 'Pedir ajuda para compor',
   },
   {
     // Troque por uma foto (image + alt) quando houver registro de almofadas,
@@ -51,6 +61,8 @@ const EXPERIENCES: readonly Experience[] = [
     title: 'Casa e Conforto',
     description:
       'Almofadas, estofados, cobertas e tudo o que traz aconchego e sofisticação para o seu lar.',
+    message: WHATSAPP_MESSAGES.casa,
+    cta: 'Perguntar sobre conforto',
   },
 ]
 
@@ -58,16 +70,20 @@ export default function Experiences() {
   return (
     <SectionCard id="experiencias">
       <div className="grid gap-4">
+        <p className="font-body text-xs font-medium uppercase tracking-[0.35em] text-loja-rosegold">
+          O que você encontra na loja
+        </p>
         <SplitText
           as="h2"
-          text="Nossas experiências"
-          className="font-display text-xl font-medium tracking-tight text-loja-dark lg:text-3xl"
+          text="Tudo para a sua casa, em versão de luxo"
+          className="font-display text-2xl font-medium tracking-tight text-loja-dark lg:text-4xl"
         />
         <Reveal delay={150}>
-          <p className="max-w-[72ch] font-body text-base font-light leading-relaxed text-loja-charcoal/75">
+          <p className="max-w-[72ch] font-body text-base font-normal leading-relaxed text-loja-charcoal/90 lg:text-lg">
             Decoração, semijoias, pedras preciosas, almofadas, estofados,
-            cobertas e muito mais — de tudo um pouco, sempre em versão de luxo
-            e com um atendimento que entende o seu estilo.
+            cobertas e muito mais — de tudo um pouco, com um atendimento que
+            entende o seu estilo. Toque em um assunto e já chame a gente no
+            WhatsApp.
           </p>
         </Reveal>
       </div>
@@ -77,7 +93,7 @@ export default function Experiences() {
           const Icon = item.icon
           return (
             <Reveal key={item.title} delay={index * 150}>
-              <div className="group grid h-full gap-6 rounded-lg border border-loja-blush/60 p-4 transition-colors duration-500 hover:border-loja-rosegold">
+              <div className="group grid h-full grid-rows-[auto_1fr] gap-6 rounded-lg border border-loja-blush/60 p-4 transition-colors duration-500 hover:border-loja-rosegold">
                 <div className="relative aspect-[5/4] w-full overflow-hidden rounded-lg bg-loja-champagne/40">
                   {item.image ? (
                     <ProgressiveImage
@@ -88,15 +104,15 @@ export default function Experiences() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                     />
                   ) : (
-                    <div className="flex h-full flex-col items-center justify-center gap-3 p-6 text-center">
+                    <div className="flex h-full flex-col items-center justify-center gap-4 bg-gradient-to-br from-loja-dark to-loja-charcoal p-6 text-center">
                       {Icon && (
                         <Icon
-                          className="h-8 w-8 text-loja-rosegold"
-                          strokeWidth={1.25}
+                          className="h-12 w-12 text-loja-gold"
+                          strokeWidth={1}
                           aria-hidden="true"
                         />
                       )}
-                      <p className="font-body text-xs uppercase tracking-[0.2em] text-loja-muted">
+                      <p className="font-body text-xs uppercase tracking-[0.2em] text-loja-champagne/80">
                         {item.caption}
                       </p>
                     </div>
@@ -107,9 +123,18 @@ export default function Experiences() {
                   <h3 className="font-display text-xl font-medium tracking-tight text-loja-dark">
                     {item.title}
                   </h3>
-                  <p className="font-body text-sm font-light leading-relaxed text-loja-charcoal/75">
+                  <p className="font-body text-sm font-normal leading-relaxed text-loja-charcoal/90">
                     {item.description}
                   </p>
+                  <a
+                    href={whatsappUrl(item.message)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto inline-flex items-center gap-1.5 pt-2 font-body text-sm font-semibold text-loja-rosegold transition-colors duration-300 hover:text-loja-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2"
+                  >
+                    {item.cta}
+                    <ArrowUpRight className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
+                  </a>
                 </div>
               </div>
             </Reveal>

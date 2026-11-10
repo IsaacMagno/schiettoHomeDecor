@@ -1,4 +1,4 @@
-import {
+﻿import {
   Sparkles,
   HeartHandshake,
   Gem,
@@ -81,7 +81,7 @@ export default function Features() {
                     {feature.title}
                   </h3>
                 </div>
-                <p className="font-body text-sm font-light leading-relaxed text-loja-charcoal/75">
+                <p className="font-body text-sm font-normal leading-relaxed text-loja-charcoal/90">
                   {feature.description}
                 </p>
               </div>

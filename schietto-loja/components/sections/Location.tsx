@@ -1,4 +1,4 @@
-import AnimatedSectionHeader from '@/components/ui/AnimatedSectionHeader'
+﻿import AnimatedSectionHeader from '@/components/ui/AnimatedSectionHeader'
 import { Clock, MapPin, MessageCircle, Phone } from 'lucide-react'
 import {
   CAFE_URL,
@@ -11,7 +11,7 @@ import {
 
 const SCHEDULE = [
   { label: 'Segunda a Sexta', value: '09h00 às 18h00' },
-  { label: 'Sábado e Domingo', value: '08h30 às 18h00' },
+  { label: 'Sábado, domingo e feriados', value: '08h30 às 18h00' },
 ] as const
 
 export default function Location() {
@@ -33,7 +33,7 @@ export default function Location() {
             <ul className="mt-6 space-y-4">
               {SCHEDULE.map((item) => (
                 <li key={item.label}>
-                  <p className="font-body text-sm font-light text-loja-muted">
+                  <p className="font-body text-sm font-normal text-loja-charcoal/70">
                     {item.label}
                   </p>
                   <p className="font-body text-sm font-medium text-loja-dark">
@@ -41,17 +41,10 @@ export default function Location() {
                   </p>
                 </li>
               ))}
-              <li>
-                <p className="font-body text-sm font-light text-loja-muted">
-                  Feriados
-                </p>
-                <p className="font-body text-sm font-medium text-loja-dark">
-                  podem ter alteração
-                </p>
-              </li>
             </ul>
-            <p className="mt-4 font-body text-xs italic text-loja-muted">
-              Horários sujeitos a alteração em feriados e datas especiais.
+            <p className="mt-4 font-body text-xs italic text-loja-charcoal/70">
+              A loja de decoração e o Caffè Schiètto funcionam nos mesmos
+              horários.
             </p>
           </div>
 

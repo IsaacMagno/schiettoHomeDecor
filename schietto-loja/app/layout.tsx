@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Jost, Manrope } from 'next/font/google'
 import './globals.css'
+import AdAttribution from '@/components/analytics/AdAttribution'
 import CookieConsent from '@/components/analytics/CookieConsent'
 import { SITE_URL } from '@/lib/contact'
 
@@ -62,7 +63,9 @@ export default function RootLayout({
         className={`${displayFont.variable} ${bodyFont.variable} font-body antialiased`}
       >
         {children}
-        {/* Aviso de cookies + Microsoft Clarity (só carrega após o aceite) */}
+        {/* Origem do anúncio (utm) nas mensagens de WhatsApp; não usa cookies */}
+        <AdAttribution />
+        {/* Aviso de cookies + Clarity e Pixel da Meta (só carregam após o aceite) */}
         <CookieConsent />
       </body>
     </html>

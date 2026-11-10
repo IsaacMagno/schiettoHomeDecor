@@ -60,6 +60,19 @@ export default function PrivacyPage() {
           funciona e o que precisa melhorar. Se você recusar, o Clarity não é
           carregado.
         </p>
+        {process.env.NEXT_PUBLIC_META_PIXEL_ID && (
+          <p className={paragraph}>
+            <strong className="font-medium text-loja-dark">
+              Pixel da Meta (somente com o seu aceite).
+            </strong>{' '}
+            Se você aceitar, usamos o Pixel da Meta (Facebook e Instagram) para
+            medir se os nossos anúncios levam a contatos, como cliques no
+            WhatsApp, no telefone e no mapa. A Meta pode receber informações do
+            seu navegador (páginas visitadas, cliques e identificadores) e
+            usá-las conforme a política dela. Se você recusar, o Pixel não é
+            carregado.
+          </p>
+        )}
         <p className={paragraph}>
           <strong className="font-medium text-loja-dark">
             Quando você fala conosco.
@@ -67,7 +80,10 @@ export default function PrivacyPage() {
           Ao tocar no botão de WhatsApp ou no telefone, a conversa acontece
           fora do site, no WhatsApp ou na sua operadora. O que você nos enviar
           ali (nome, telefone, mensagem) é usado apenas para responder ao seu
-          contato, e o WhatsApp trata esses dados segundo a política dele.
+          contato, e o WhatsApp trata esses dados segundo a política dele. Se
+          você chegar por um anúncio nosso, o link traz o nome da campanha e
+          nós o acrescentamos à mensagem pronta do WhatsApp, para sabermos qual
+          anúncio gerou o contato.
         </p>
         <p className={paragraph}>
           <strong className="font-medium text-loja-dark">
