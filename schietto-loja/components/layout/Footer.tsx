@@ -33,6 +33,7 @@ const NAV_LINKS = [
   { label: 'Início', href: '#' },
   { label: 'Sobre', href: '#sobre' },
   { label: 'Experiências', href: '#experiencias' },
+  { label: 'Café', href: '#cafe' },
   { label: 'Composições', href: '#composicoes' },
   { label: 'Galeria', href: '#galeria' },
   { label: 'Localização', href: '#localizacao' },
