@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Schiètto Home Decor — site da loja
 
-## Getting Started
+Site de apresentação da **Schiètto Home Decor**, loja de decoração de luxo em
+Pedreira, SP (decoração, semijoias, pedras preciosas, almofadas, estofados,
+cobertas e mais). Não é e-commerce: o objetivo é inspirar online e levar a
+pessoa à loja ou ao WhatsApp.
 
-First, run the development server:
+**Produção:** https://homedecor.schietto.com.br (Vercel, deploy automático a
+cada push na `main`).
+
+## Stack
+
+Next.js 14 (App Router) · TypeScript · Tailwind CSS · lucide-react
+
+## Rodando localmente
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev     # http://localhost:3002
+npm run build   # build de produção + lint + checagem de tipos
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Estrutura
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Pasta | O que tem |
+|-------|-----------|
+| `app/` | `layout.tsx` (metadados/SEO), `page.tsx` (página única), `privacidade/`, `sitemap.ts`, `robots.ts` |
+| `components/sections/` | Seções da página (Hero, Intro, Experiências, Diferenciais, Composições, Galeria, Localização...) |
+| `components/ui/` | Peças reutilizáveis (Reveal, SplitText, lightbox, WhatsApp flutuante...) |
+| `components/analytics/` | Aviso de cookies e carregamento do Microsoft Clarity |
+| `components/seo/` | Dados estruturados (JSON-LD) da loja para o Google |
+| `lib/contact.ts` | URL do site, WhatsApp, telefone, Instagram, Maps |
+| `lib/gallery.ts` | Quais fotos aparecem em cada seção |
+| `public/images/` | Fotos (WebP) e `public/og-image.jpg` (prévia ao compartilhar o link) |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Como mudar as coisas mais comuns
 
-## Learn More
+- **Telefone, WhatsApp, Instagram, endereço do site:** `lib/contact.ts`.
+- **Horários:** `components/sections/Location.tsx`, `components/layout/Footer.tsx`
+  **e** `components/seo/LocalBusinessJsonLd.tsx` (o Google lê os horários dali).
+- **Fotos do topo:** `HERO_SLIDES` em `lib/gallery.ts` (uma foto horizontal para
+  desktop e uma vertical para celular por slide).
+- **Vídeo no topo:** coloque `public/video/hero.mp4` e troque `HERO_VIDEO_SRC`
+  em `lib/gallery.ts` (veja `public/video/README.md`).
+- **Foto de almofadas/estofados/cobertas:** o card "Casa e Conforto" em
+  `components/sections/Experiences.tsx` usa um ícone; para usar foto, troque
+  `icon`/`caption` por `image`/`alt`.
+- **Imagem de prévia ao compartilhar o link:** substitua `public/og-image.jpg`
+  (1200×630). Redes sociais guardam a imagem antiga em cache; para atualizar,
+  use o Sharing Debugger do Facebook.
 
-To learn more about Next.js, take a look at the following resources:
+## Privacidade e métricas
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O Microsoft Clarity só é carregado **depois que a pessoa aceita** o aviso de
+cookies (`components/analytics/CookieConsent.tsx`). Com o aceite, cliques em
+WhatsApp, telefone, mapa, Instagram e Caffè Schiètto viram eventos no Clarity
+(`whatsapp_click`, `telefone_click`, `maps_click`, `instagram_click`,
+`cafe_click`). O texto da política fica em `app/privacidade/page.tsx` — se o
+site passar a coletar mais dados, atualize-o.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## SEO
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Metadados e Open Graph em `app/layout.tsx`; `sitemap.xml` e `robots.txt` são
+gerados por `app/sitemap.ts` e `app/robots.ts`; dados da loja (JSON-LD) em
+`components/seo/LocalBusinessJsonLd.tsx`.
