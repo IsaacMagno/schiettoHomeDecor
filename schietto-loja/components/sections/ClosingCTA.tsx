@@ -15,7 +15,7 @@ export default function ClosingCTA() {
 
       <SplitText
         as="h2"
-        text="Pronta para se encantar?"
+        text="Venha se encantar com a Schiètto"
         className="font-display text-xl font-medium tracking-tight text-loja-dark lg:text-3xl"
       />
 

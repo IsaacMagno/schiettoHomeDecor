@@ -16,7 +16,8 @@ export default function Intro() {
             <p className="font-display text-lg font-normal leading-snug text-loja-dark sm:text-xl lg:text-3xl">
               No andar superior de um casarão histórico no centro de Pedreira,
               transformamos um espaço cheio de memória em um refúgio de estilo.
-              Cada peça de decoração e cada semijoia passa por uma curadoria
+              Da decoração às semijoias, das pedras preciosas às almofadas,
+              estofados e cobertas, cada peça passa por uma curadoria
               cuidadosa — pensada para quem acredita que os detalhes contam
               histórias.
             </p>

@@ -1,77 +1,75 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
-import ProgressiveImage from '@/components/ui/ProgressiveImage'
-import { HERO_DESKTOP_SLIDES, HERO_MOBILE_SLIDES } from '@/lib/gallery'
+import { getImageProps } from 'next/image'
+import { HERO_SLIDES, HERO_VIDEO_SRC } from '@/lib/gallery'
 
 const AUTOPLAY_MS = 5000
 const SWIPE_THRESHOLD_PX = 50
-const HERO_VIDEO_SRC = '/video/hero.mp4'
+const DESKTOP_QUERY = '(min-width: 1024px)'
 
-type HeroSlide = { src: string; alt: string }
+type HeroSlide = (typeof HERO_SLIDES)[number]
+
+/**
+ * Art direction com <picture>: foto horizontal no desktop, vertical no celular.
+ * O navegador escolhe pela media query já no HTML do servidor — sem esperar o
+ * JavaScript — e a imagem do primeiro slide sai com prioridade alta.
+ */
+function SlidePicture({
+  slide,
+  priority,
+}: {
+  slide: HeroSlide
+  priority: boolean
+}) {
+  const common = {
+    alt: slide.alt,
+    fill: true,
+    sizes: '100vw',
+    priority,
+    className: 'object-cover',
+  } as const
+  const { props: desktop } = getImageProps({ ...common, src: slide.desktop })
+  const { props: mobile } = getImageProps({ ...common, src: slide.mobile })
+
+  return (
+    <picture>
+      <source media={DESKTOP_QUERY} srcSet={desktop.srcSet} sizes="100vw" />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img {...mobile} alt={slide.alt} draggable={false} />
+    </picture>
+  )
+}
 
 export default function HeroSlider() {
-  const [isDesktop, setIsDesktop] = useState(false)
   const [active, setActive] = useState(0)
-  const [videoAvailable, setVideoAvailable] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const dragStartX = useRef<number | null>(null)
-
-  const slides: readonly HeroSlide[] = isDesktop
-    ? HERO_DESKTOP_SLIDES
-    : HERO_MOBILE_SLIDES
-
-  useEffect(() => {
-    const media = window.matchMedia('(min-width: 1024px)')
-    const sync = () => {
-      setIsDesktop(media.matches)
-      setActive(0)
-    }
-    sync()
-    media.addEventListener('change', sync)
-    return () => media.removeEventListener('change', sync)
-  }, [])
-
-  useEffect(() => {
-    let cancelled = false
-    fetch(HERO_VIDEO_SRC, { method: 'HEAD' })
-      .then((response) => {
-        if (!cancelled) setVideoAvailable(response.ok)
-      })
-      .catch(() => {
-        if (!cancelled) setVideoAvailable(false)
-      })
-    return () => {
-      cancelled = true
-    }
-  }, [])
+  const total = HERO_SLIDES.length
 
   const restartAutoplay = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current)
-    if (slides.length <= 1) return
+    // Quem pede menos movimento não recebe troca automática de slides.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     timerRef.current = setInterval(() => {
-      setActive((current) => (current + 1) % slides.length)
+      setActive((current) => (current + 1) % total)
     }, AUTOPLAY_MS)
-  }, [slides.length])
+  }, [total])
 
   useEffect(() => {
-    if (videoAvailable) return
+    if (HERO_VIDEO_SRC) return
     restartAutoplay()
     return () => {
       if (timerRef.current) clearInterval(timerRef.current)
     }
-  }, [videoAvailable, restartAutoplay, slides])
-
-  useEffect(() => {
-    setActive((current) => Math.min(current, slides.length - 1))
-  }, [slides.length])
+  }, [restartAutoplay])
 
   const goTo = useCallback(
     (index: number) => {
-      setActive((index + slides.length) % slides.length)
+      setActive((index + total) % total)
       restartAutoplay()
     },
-    [restartAutoplay, slides.length]
+    [restartAutoplay, total]
   )
 
   const onPointerDown = useCallback((event: React.PointerEvent) => {
@@ -85,11 +83,7 @@ export default function HeroSlider() {
       dragStartX.current = null
 
       if (Math.abs(delta) < SWIPE_THRESHOLD_PX) return
-      if (delta < 0) {
-        goTo(active + 1)
-      } else {
-        goTo(active - 1)
-      }
+      goTo(delta < 0 ? active + 1 : active - 1)
     },
     [active, goTo]
   )
@@ -98,7 +92,7 @@ export default function HeroSlider() {
     dragStartX.current = null
   }, [])
 
-  if (videoAvailable) {
+  if (HERO_VIDEO_SRC) {
     return (
       <video
         autoPlay
@@ -107,7 +101,6 @@ export default function HeroSlider() {
         playsInline
         aria-label="Vídeo de ambiente da loja Schiètto em Pedreira"
         className="absolute inset-0 h-full w-full object-cover"
-        onError={() => setVideoAvailable(false)}
       >
         <source src={HERO_VIDEO_SRC} type="video/mp4" />
       </video>
@@ -124,9 +117,9 @@ export default function HeroSlider() {
       aria-roledescription="carrossel"
       aria-label="Imagens da loja Schiètto — arraste para navegar"
     >
-      {slides.map((slide, index) => (
+      {HERO_SLIDES.map((slide, index) => (
         <div
-          key={`${isDesktop ? 'desk' : 'mob'}-${slide.src}`}
+          key={slide.desktop}
           className={`absolute inset-0 transition-opacity duration-[1200ms] ease-in-out ${
             index === active ? 'z-[1] opacity-100' : 'z-0 opacity-0'
           }`}
@@ -134,19 +127,9 @@ export default function HeroSlider() {
         >
           <div
             className={`h-full w-full ${index === active ? 'animate-slide-zoom' : ''}`}
-            key={index === active ? `zoom-${active}-${slide.src}` : `idle-${slide.src}`}
+            key={index === active ? `zoom-${active}` : `idle-${index}`}
           >
-            <ProgressiveImage
-              src={slide.src}
-              alt={slide.alt}
-              fill
-              priority={index === 0}
-              draggable={false}
-              className="object-cover"
-              sizes="100vw"
-              showSpinner={index === active}
-              skeletonTone="dark"
-            />
+            <SlidePicture slide={slide} priority={index === 0} />
           </div>
         </div>
       ))}
@@ -154,33 +137,31 @@ export default function HeroSlider() {
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-32 bg-gradient-to-b from-loja-dark/70 to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[320px] bg-gradient-to-t from-loja-dark/80 to-transparent lg:h-96" />
 
-      {slides.length > 1 && (
-        <div className="absolute bottom-8 left-1/2 z-[3] flex -translate-x-1/2 items-center gap-3 lg:bottom-10">
-          {slides.map((slide, index) => (
-            <button
-              key={`${isDesktop ? 'desk' : 'mob'}-dot-${slide.src}`}
-              type="button"
-              aria-label={`Ir para a imagem ${index + 1}`}
-              aria-current={index === active}
-              onClick={(event) => {
-                event.stopPropagation()
-                goTo(index)
-              }}
-              onPointerDown={(event) => event.stopPropagation()}
-              onPointerUp={(event) => event.stopPropagation()}
-              className="group py-2"
-            >
-              <span
-                className={`block h-[2px] w-9 rounded-full transition-all duration-500 sm:w-11 ${
-                  index === active
-                    ? 'bg-loja-offwhite'
-                    : 'bg-loja-offwhite/35 group-hover:bg-loja-offwhite/60'
-                }`}
-              />
-            </button>
-          ))}
-        </div>
-      )}
+      <div className="absolute bottom-8 left-1/2 z-[3] flex -translate-x-1/2 items-center gap-3 lg:bottom-10">
+        {HERO_SLIDES.map((slide, index) => (
+          <button
+            key={`dot-${slide.desktop}`}
+            type="button"
+            aria-label={`Ir para a imagem ${index + 1}`}
+            aria-current={index === active}
+            onClick={(event) => {
+              event.stopPropagation()
+              goTo(index)
+            }}
+            onPointerDown={(event) => event.stopPropagation()}
+            onPointerUp={(event) => event.stopPropagation()}
+            className="group py-2"
+          >
+            <span
+              className={`block h-[2px] w-9 rounded-full transition-all duration-500 sm:w-11 ${
+                index === active
+                  ? 'bg-loja-offwhite'
+                  : 'bg-loja-offwhite/35 group-hover:bg-loja-offwhite/60'
+              }`}
+            />
+          </button>
+        ))}
+      </div>
     </div>
   )
 }
