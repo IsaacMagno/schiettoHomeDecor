@@ -36,8 +36,11 @@ npm run build   # build de produção + lint + checagem de tipos
 ## Como mudar as coisas mais comuns
 
 - **Telefone, WhatsApp, Instagram, endereço do site:** `lib/contact.ts`.
-- **Horários:** `components/sections/Location.tsx`, `components/layout/Footer.tsx`
-  **e** `components/seo/LocalBusinessJsonLd.tsx` (o Google lê os horários dali).
+- **Horários** (loja e café têm o mesmo; fim de semana e feriados abrem às
+  8h30): `components/sections/Location.tsx`, `CafeBand.tsx`,
+  `components/layout/Footer.tsx`, `components/ui/OpenNow.tsx` **e**
+  `components/seo/LocalBusinessJsonLd.tsx` (o Google lê os horários dali).
+  Feriado municipal (da cidade) entra em `EXTRA_HOLIDAYS` em `lib/holidays.ts`.
 - **Fotos do topo:** `HERO_SLIDES` em `lib/gallery.ts` (uma foto horizontal para
   desktop e uma vertical para celular por slide).
 - **Vídeo no topo:** coloque `public/video/hero.mp4` e troque `HERO_VIDEO_SRC`
