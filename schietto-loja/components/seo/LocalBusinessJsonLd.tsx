@@ -15,9 +15,9 @@ const data = {
   '@context': 'https://schema.org',
   '@type': 'HomeGoodsStore',
   '@id': `${SITE_URL}/#loja`,
-  name: 'Schiètto Home Decor & Semijoias',
+  name: 'Schiètto Home Decor',
   description:
-    'Curadoria de decoração e semijoias no andar superior de um casarão histórico no centro de Pedreira, SP.',
+    'Loja de decoração de luxo no andar superior de um casarão histórico no centro de Pedreira, SP: decoração, semijoias, pedras preciosas, almofadas, estofados, cobertas e mais.',
   url: `${SITE_URL}/`,
   image: `${SITE_URL}/og-image.jpg`,
   logo: `${SITE_URL}/apple-icon.png`,
