@@ -9,7 +9,9 @@ import {
  * Dados estruturados (schema.org) da loja física para o Google:
  * endereço, telefone, horários e perfis — ajuda nas buscas locais
  * ("decoração Pedreira", "semijoias Pedreira") e no painel do Maps.
- * Mantenha os horários em sincronia com a seção Localização.
+ * Mantenha os horários em sincronia com Location.tsx, CafeBand.tsx, Footer.tsx
+ * e OpenNow.tsx. Feriados (8h30 às 18h, como no fim de semana) não cabem no
+ * formato `dayOfWeek`, por isso aparecem só nas páginas.
  */
 const data = {
   '@context': 'https://schema.org',
