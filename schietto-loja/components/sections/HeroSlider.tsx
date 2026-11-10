@@ -135,9 +135,9 @@ export default function HeroSlider() {
       ))}
 
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-32 bg-gradient-to-b from-loja-dark/70 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[320px] bg-gradient-to-t from-loja-dark/80 to-transparent lg:h-96" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-[70%] bg-gradient-to-t from-loja-dark/95 via-loja-dark/60 to-transparent lg:h-[75%]" />
 
-      <div className="absolute bottom-8 left-1/2 z-[3] flex -translate-x-1/2 items-center gap-3 lg:bottom-10">
+      <div className="absolute bottom-24 left-1/2 z-[3] flex -translate-x-1/2 items-center gap-3 sm:bottom-6 lg:bottom-8">
         {HERO_SLIDES.map((slide, index) => (
           <button
             key={`dot-${slide.desktop}`}

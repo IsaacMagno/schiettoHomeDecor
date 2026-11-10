@@ -1,4 +1,4 @@
-import AnimatedSectionHeader from '@/components/ui/AnimatedSectionHeader'
+﻿import AnimatedSectionHeader from '@/components/ui/AnimatedSectionHeader'
 import { Clock, MapPin, MessageCircle, Phone } from 'lucide-react'
 import {
   CAFE_URL,
@@ -33,7 +33,7 @@ export default function Location() {
             <ul className="mt-6 space-y-4">
               {SCHEDULE.map((item) => (
                 <li key={item.label}>
-                  <p className="font-body text-sm font-light text-loja-muted">
+                  <p className="font-body text-sm font-normal text-loja-charcoal/70">
                     {item.label}
                   </p>
                   <p className="font-body text-sm font-medium text-loja-dark">
@@ -42,7 +42,7 @@ export default function Location() {
                 </li>
               ))}
               <li>
-                <p className="font-body text-sm font-light text-loja-muted">
+                <p className="font-body text-sm font-normal text-loja-charcoal/70">
                   Feriados
                 </p>
                 <p className="font-body text-sm font-medium text-loja-dark">

@@ -1,4 +1,4 @@
-import ShowcaseGallery from '@/components/sections/ShowcaseGallery'
+﻿import ShowcaseGallery from '@/components/sections/ShowcaseGallery'
 import Reveal from '@/components/ui/Reveal'
 import SplitText from '@/components/ui/SplitText'
 import SectionCard from '@/components/ui/SectionCard'
@@ -15,7 +15,7 @@ export default function Highlights() {
           className="font-display text-xl font-medium tracking-tight text-loja-dark lg:text-3xl"
         />
         <Reveal delay={150}>
-          <p className="max-w-[72ch] font-body text-base font-light leading-relaxed text-loja-charcoal/75">
+          <p className="max-w-[72ch] font-body text-base font-normal leading-relaxed text-loja-charcoal/90">
             Uma seleção editorial do que você encontra na loja — curadoria,
             textura e detalhes pensados para encantar.
           </p>

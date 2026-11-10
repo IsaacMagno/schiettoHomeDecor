@@ -1,4 +1,4 @@
-import { MessageCircle } from 'lucide-react'
+﻿import { MessageCircle } from 'lucide-react'
 import Reveal from '@/components/ui/Reveal'
 import SplitText from '@/components/ui/SplitText'
 import SectionCard from '@/components/ui/SectionCard'
@@ -36,7 +36,7 @@ export default function Consultant() {
           />
 
           <Reveal delay={300}>
-            <p className="mt-6 max-w-[72ch] font-body text-base font-light leading-loose text-loja-charcoal/80">
+            <p className="mt-6 max-w-[72ch] font-body text-base font-normal leading-loose text-loja-charcoal/90">
               Na Schiètto, a beleza se revela no encontro. Texturas, formas e
               tons que se encontram e se completam — composições nascidas do
               olhar atento, pensadas para o seu ambiente com delicadeza e
