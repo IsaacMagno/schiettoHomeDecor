@@ -61,7 +61,7 @@ export default function CafeBand() {
               Centro — Pedreira, SP
             </p>
             <p className="mt-6 font-body text-xs font-medium uppercase tracking-[0.2em] text-loja-gold">
-              Horários da loja de decoração
+              Horários da loja e do café
             </p>
             <dl className="mt-3 space-y-4 font-body text-sm">
               <div>
@@ -69,14 +69,13 @@ export default function CafeBand() {
                 <dd className="mt-0.5 font-medium text-loja-offwhite">09h00 às 18h00</dd>
               </div>
               <div>
-                <dt className="text-loja-champagne/60">Sábado e Domingo</dt>
+                <dt className="text-loja-champagne/60">Sábado, domingo e feriados</dt>
                 <dd className="mt-0.5 font-medium text-loja-offwhite">08h30 às 18h00</dd>
               </div>
             </dl>
             <p className="mt-6 border-t border-loja-champagne/15 pt-4 font-body text-xs text-loja-champagne/60">
-              A loja fica no andar superior; o café, no mesmo endereço. Os
-              horários do café estão no site dele. Horários sujeitos a
-              alteração em feriados.
+              A loja de decoração fica no andar superior; o café, no mesmo
+              endereço. Os dois funcionam nos mesmos horários.
             </p>
           </div>
         </Reveal>
