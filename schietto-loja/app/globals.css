@@ -13,8 +13,8 @@ html {
 }
 
 ::selection {
-  background-color: #B76E79;
-  color: #FAF7F4;
+  background-color: #D08F32;
+  color: #34130C;
 }
 
 @keyframes fadeInUp {
@@ -101,25 +101,52 @@ html {
   }
 }
 
-/* Quem pede menos movimento no sistema vê tudo direto, sem animações */
+/*
+ * Quem pede menos movimento no sistema continua vendo as entradas suaves
+ * (só esmaecer). O que se mexe muito (zoom, deslizes) fica parado.
+ */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-delay: 0ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  .animate-slide-zoom,
+  .animate-hero-zoom {
+    animation: none;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes splitReveal {
+    from {
+      opacity: 0;
+      transform: none;
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
 }
-
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid #B76E79;
+  outline: 2px solid #D08F32;
   outline-offset: 2px;
 }
 
