@@ -37,7 +37,7 @@ npm run build   # build de produção + lint + checagem de tipos
 
 - **Telefone, WhatsApp, Instagram, endereço do site:** `lib/contact.ts`.
 - **Horários** (loja e café têm o mesmo; fim de semana e feriados abrem às
-  8h30): `components/sections/Location.tsx`, `CafeBand.tsx`,
+  8h30): `components/sections/Location.tsx`,
   `components/layout/Footer.tsx`, `components/ui/OpenNow.tsx` **e**
   `components/seo/LocalBusinessJsonLd.tsx` (o Google lê os horários dali).
   Feriado municipal (da cidade) entra em `EXTRA_HOLIDAYS` em `lib/holidays.ts`.
