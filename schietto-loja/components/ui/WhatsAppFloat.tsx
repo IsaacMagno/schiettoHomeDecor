@@ -32,7 +32,7 @@ export default function WhatsAppFloat() {
           target="_blank"
           rel="noopener noreferrer"
           tabIndex={pastHero ? 0 : -1}
-          className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#25D366] font-body text-base font-semibold text-white transition-colors duration-300 hover:bg-[#1fb857] focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2"
+          className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-[#25D366] font-body text-base font-semibold text-loja-charcoal transition-colors duration-300 hover:bg-[#1fb857] focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2"
         >
           <MessageCircle className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
           Chamar no WhatsApp
@@ -45,7 +45,7 @@ export default function WhatsAppFloat() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Falar conosco pelo WhatsApp"
-        className="fixed bottom-6 right-6 z-50 hidden h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2 sm:flex"
+        className="fixed bottom-6 right-6 z-50 hidden h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-loja-charcoal shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2 sm:flex"
       >
         <MessageCircle className="h-7 w-7" strokeWidth={1.75} aria-hidden="true" />
       </a>

@@ -49,8 +49,6 @@ export default function HeroSlider() {
 
   const restartAutoplay = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current)
-    // Quem pede menos movimento não recebe troca automática de slides.
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     timerRef.current = setInterval(() => {
       setActive((current) => (current + 1) % total)
     }, AUTOPLAY_MS)

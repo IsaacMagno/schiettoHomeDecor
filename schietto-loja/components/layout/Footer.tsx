@@ -1,4 +1,4 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 import { MessageCircle, MapPin, Phone } from 'lucide-react'
 import CookiePreferencesButton from '@/components/analytics/CookiePreferencesButton'
 import {
@@ -6,6 +6,7 @@ import {
   INSTAGRAM_URL,
   PHONE_DISPLAY,
   PHONE_TEL,
+  PORTAL_URL,
   WHATSAPP_URL,
 } from '@/lib/contact'
 
@@ -33,14 +34,13 @@ const NAV_LINKS = [
   { label: 'Início', href: '#' },
   { label: 'Sobre', href: '#sobre' },
   { label: 'Experiências', href: '#experiencias' },
-  { label: 'Café', href: '#cafe' },
   { label: 'Composições', href: '#composicoes' },
   { label: 'Galeria', href: '#galeria' },
   { label: 'Localização', href: '#localizacao' },
 ] as const
 
 const linkClass =
-  'font-body text-sm font-light text-loja-champagne/60 transition-colors duration-300 hover:text-loja-offwhite focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2'
+  'font-body text-sm font-light text-loja-champagne/60 transition-colors duration-300 hover:text-loja-offwhite focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-gold focus-visible:outline-offset-2'
 
 export default function Footer() {
   return (
@@ -53,12 +53,12 @@ export default function Footer() {
           <div>
             <p className="font-display text-3xl font-semibold tracking-tight text-loja-offwhite">
               Schiètto
-              <span className="text-loja-rosegold">.</span>
+              <span className="text-loja-gold">.</span>
             </p>
             <p className="mt-3 font-body text-sm font-light text-loja-champagne/70">
               Home Decor de Luxo
             </p>
-            <p className="mt-1 font-body text-xs font-light text-loja-muted">
+            <p className="mt-1 font-body text-xs font-light text-loja-champagne/55">
               Pedreira, SP · Desde 2023
             </p>
             <div className="mt-6 flex gap-4">
@@ -67,7 +67,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram da Schiètto"
-                className="text-loja-muted transition-colors duration-300 hover:text-loja-rosegold focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2"
+                className="text-loja-champagne/60 transition-colors duration-300 hover:text-loja-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-gold focus-visible:outline-offset-2"
               >
                 <InstagramIcon className="h-5 w-5" />
               </a>
@@ -95,13 +95,13 @@ export default function Footer() {
             </h3>
             <address className="mt-6 space-y-3 font-body text-sm font-light not-italic text-loja-champagne/60">
               <p className="flex items-start gap-2">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-loja-rosegold" strokeWidth={1.5} aria-hidden="true" />
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-loja-gold" strokeWidth={1.5} aria-hidden="true" />
                 Rua Primo Frazato, 30
                 <br />
                 Centro — Pedreira, SP
               </p>
               <p className="flex items-center gap-2">
-                <Phone className="h-4 w-4 shrink-0 text-loja-rosegold" strokeWidth={1.5} aria-hidden="true" />
+                <Phone className="h-4 w-4 shrink-0 text-loja-gold" strokeWidth={1.5} aria-hidden="true" />
                 <a
                   href={PHONE_TEL}
                   className="transition-colors hover:text-loja-offwhite"
@@ -114,7 +114,7 @@ export default function Footer() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 rounded-full border border-loja-rosegold/60 px-5 py-2 font-body text-sm text-loja-rosegold transition-all duration-300 hover:bg-loja-rosegold hover:text-loja-offwhite focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2"
+              className="mt-5 inline-flex items-center gap-2 rounded-full border border-loja-gold/60 px-5 py-2 font-body text-sm text-loja-gold transition-all duration-300 hover:bg-loja-gold hover:text-loja-charcoal focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-gold focus-visible:outline-offset-2"
             >
               <MessageCircle className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
               WhatsApp
@@ -137,12 +137,12 @@ export default function Footer() {
               </li>
             </ul>
             <div className="mt-6 border-t border-loja-charcoal pt-5">
-              <p className="font-body text-xs text-loja-muted">Mesmo espaço:</p>
+              <p className="font-body text-xs text-loja-champagne/55">No mesmo endereço:</p>
               <a
                 href={CAFE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-1 inline-block font-body text-sm font-light text-loja-champagne/60 transition-colors duration-300 hover:text-loja-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2"
+                className="mt-1 inline-block font-body text-sm font-light text-loja-champagne/60 transition-colors duration-300 hover:text-loja-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-gold focus-visible:outline-offset-2"
               >
                 Caffè Schiètto
               </a>
@@ -151,13 +151,21 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 border-t border-loja-charcoal pt-8">
-          <p className="text-center font-body text-xs font-light text-loja-muted">
+          <p className="text-center font-body text-xs font-light text-loja-champagne/55">
             © 2026 Schiètto Home Decor · Pedreira, SP
           </p>
-          <p className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-center font-body text-xs font-light text-loja-muted">
+          <p className="mt-2 text-center font-body text-xs font-light text-loja-champagne/55">
+            <a
+              href={PORTAL_URL}
+              className="transition-colors duration-300 hover:text-loja-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-gold focus-visible:outline-offset-2"
+            >
+              Conheça todos os espaços Schiètto
+            </a>
+          </p>
+          <p className="mt-3 flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-center font-body text-xs font-light text-loja-champagne/55">
             <Link
               href="/privacidade"
-              className="transition-colors duration-300 hover:text-loja-offwhite focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2"
+              className="transition-colors duration-300 hover:text-loja-offwhite focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-gold focus-visible:outline-offset-2"
             >
               Política de Privacidade
             </Link>

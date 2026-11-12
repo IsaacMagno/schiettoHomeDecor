@@ -3,7 +3,6 @@ import Footer from '@/components/layout/Footer'
 import Hero from '@/components/sections/Hero'
 import Intro from '@/components/sections/Intro'
 import Experiences from '@/components/sections/Experiences'
-import CafeBand from '@/components/sections/CafeBand'
 import Features from '@/components/sections/Features'
 import Consultant from '@/components/sections/Consultant'
 import Highlights from '@/components/sections/Highlights'
@@ -21,7 +20,6 @@ export default function Home() {
       <Hero />
       <Intro />
       <Experiences />
-      <CafeBand />
       <Features />
       <Consultant />
       <Highlights />

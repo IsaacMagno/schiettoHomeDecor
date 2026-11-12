@@ -37,7 +37,7 @@ export default function Hero() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-8 py-4 font-body text-base font-semibold text-white shadow-lg transition-all duration-300 hover:bg-[#1fb857] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-offwhite focus-visible:outline-offset-2"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-8 py-4 font-body text-base font-semibold text-loja-charcoal shadow-lg transition-all duration-300 hover:bg-[#1fb857] hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-offwhite focus-visible:outline-offset-2"
           >
             <MessageCircle className="h-5 w-5" strokeWidth={1.75} aria-hidden="true" />
             Chamar no WhatsApp
@@ -46,7 +46,7 @@ export default function Hero() {
             href="#experiencias"
             className="inline-flex items-center justify-center rounded-full border border-loja-offwhite/70 px-8 py-4 font-body text-base font-medium text-loja-offwhite transition-all duration-300 hover:border-loja-offwhite hover:bg-loja-offwhite/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2"
           >
-            Conhecer a loja e o café
+            Conhecer a loja
           </a>
         </div>
       </div>
