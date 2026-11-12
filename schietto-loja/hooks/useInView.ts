@@ -22,7 +22,6 @@ export function useInView<T extends HTMLElement = HTMLDivElement>(
   useIsomorphicLayoutEffect(() => {
     const element = ref.current
     if (!element) return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     if (!('IntersectionObserver' in window)) return
     // Já está na tela (ou acima dela): fica visível, a animação CSS roda no load.
     if (element.getBoundingClientRect().top < window.innerHeight) return
