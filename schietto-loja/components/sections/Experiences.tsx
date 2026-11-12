@@ -1,4 +1,4 @@
-import { ArrowUpRight, Sofa } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import Reveal from '@/components/ui/Reveal'
 import SplitText from '@/components/ui/SplitText'
@@ -34,12 +34,11 @@ const EXPERIENCES: readonly Experience[] = [
   },
   {
     image: EXPERIENCE_IMAGES.semijoias,
-    alt: 'Semijoias em exposição na Schiètto',
+    alt: 'Pedras preciosas e esferas de cristal em exposição na Schiètto',
     title: 'Semijoias e Pedras',
     description:
       'Semijoias e pedras preciosas delicadas e atemporais, para o dia a dia e para ocasiões que merecem brilho.',
-    // Mobile: sobe o foco para a joia não cortar na base do card 5:4
-    imageClass: 'object-cover object-[center_88%] md:object-[center_72%]',
+    imageClass: 'object-cover object-[center_75%]',
     message: WHATSAPP_MESSAGES.semijoias,
     cta: 'Perguntar sobre semijoias',
   },
@@ -54,10 +53,9 @@ const EXPERIENCES: readonly Experience[] = [
     cta: 'Pedir ajuda para compor',
   },
   {
-    // Troque por uma foto (image + alt) quando houver registro de almofadas,
-    // estofados e cobertas.
-    icon: Sofa,
-    caption: 'Almofadas · Estofados · Cobertas',
+    image: EXPERIENCE_IMAGES.casa,
+    alt: 'Cobertas e almofadas em tons neutros na Schiètto',
+    imageClass: 'object-cover',
     title: 'Casa e Conforto',
     description:
       'Almofadas, estofados, cobertas e tudo o que traz aconchego e sofisticação para o seu lar.',

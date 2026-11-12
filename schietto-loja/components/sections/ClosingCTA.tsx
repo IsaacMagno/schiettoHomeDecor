@@ -1,4 +1,4 @@
-﻿import { MessageCircle } from 'lucide-react'
+import { MessageCircle } from 'lucide-react'
 import Reveal from '@/components/ui/Reveal'
 import SplitText from '@/components/ui/SplitText'
 import { WHATSAPP_URL } from '@/lib/contact'
@@ -32,7 +32,7 @@ export default function ClosingCTA() {
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-8 py-4 font-body text-base font-semibold text-white transition-colors duration-300 hover:bg-[#1fb857] focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2"
+          className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-8 py-4 font-body text-base font-semibold text-loja-charcoal transition-colors duration-300 hover:bg-[#1fb857] focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2"
         >
           <MessageCircle className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
           Chamar no WhatsApp
