@@ -1,5 +1,11 @@
 import Reveal from '@/components/ui/Reveal'
 import SplitText from '@/components/ui/SplitText'
+import ScrollWords from '@/components/ui/ScrollWords'
+
+const INTRO_TEXT = [
+  'No andar superior de um casarão histórico no centro de Pedreira, transformamos um espaço cheio de memória em um refúgio de estilo. Da decoração às semijoias, das pedras preciosas às almofadas, estofados e cobertas, cada peça passa por uma curadoria cuidadosa — pensada para quem acredita que os detalhes contam histórias.',
+  'Aqui, sofisticação e acolhimento caminham juntos. Venha descobrir, com calma e sem pressa, o que combina com você.',
+] as const
 
 export default function Intro() {
   return (
@@ -12,20 +18,10 @@ export default function Intro() {
         />
 
         <Reveal delay={200}>
-          <div className="grid gap-6">
-            <p className="font-display text-lg font-normal leading-snug text-loja-dark sm:text-xl lg:text-3xl">
-              No andar superior de um casarão histórico no centro de Pedreira,
-              transformamos um espaço cheio de memória em um refúgio de estilo.
-              Da decoração às semijoias, das pedras preciosas às almofadas,
-              estofados e cobertas, cada peça passa por uma curadoria
-              cuidadosa — pensada para quem acredita que os detalhes contam
-              histórias.
-            </p>
-            <p className="font-display text-lg font-normal leading-snug text-loja-dark sm:text-xl lg:text-3xl">
-              Aqui, sofisticação e acolhimento caminham juntos. Venha
-              descobrir, com calma e sem pressa, o que combina com você.
-            </p>
-          </div>
+          <ScrollWords
+            paragraphs={INTRO_TEXT}
+            className="font-display text-lg font-normal leading-snug text-loja-dark sm:text-xl lg:text-3xl"
+          />
         </Reveal>
       </div>
     </section>

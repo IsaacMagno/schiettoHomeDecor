@@ -10,14 +10,14 @@ const config: Config = {
     extend: {
       colors: {
         loja: {
-          dark: '#1C1C1E',
-          charcoal: '#2D2D2D',
-          rosegold: '#B76E79',
-          blush: '#E8C4C4',
-          champagne: '#F0E0C8',
-          offwhite: '#FAF7F4',
-          gold: '#C9A96E',
-          muted: '#8A8A8A',
+          dark: '#24100A',
+          charcoal: '#34130C',
+          rosegold: '#8A5A12',
+          blush: '#E6D5BA',
+          champagne: '#F1E4CE',
+          offwhite: '#FBF6EE',
+          gold: '#D08F32',
+          muted: '#7A6757',
         },
       },
       fontFamily: {

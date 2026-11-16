@@ -3,13 +3,14 @@ import Footer from '@/components/layout/Footer'
 import Hero from '@/components/sections/Hero'
 import Intro from '@/components/sections/Intro'
 import Experiences from '@/components/sections/Experiences'
-import CafeBand from '@/components/sections/CafeBand'
 import Features from '@/components/sections/Features'
 import Consultant from '@/components/sections/Consultant'
 import Highlights from '@/components/sections/Highlights'
 import Location from '@/components/sections/Location'
 import ClosingCTA from '@/components/sections/ClosingCTA'
 import BackToTop from '@/components/ui/BackToTop'
+import Marquee from '@/components/ui/Marquee'
+import ScrollProgress from '@/components/ui/ScrollProgress'
 import WhatsAppFloat from '@/components/ui/WhatsAppFloat'
 import LocalBusinessJsonLd from '@/components/seo/LocalBusinessJsonLd'
 
@@ -18,10 +19,11 @@ export default function Home() {
     <main className="bg-loja-offwhite max-sm:pb-20">
       <LocalBusinessJsonLd />
       <Header />
+      <ScrollProgress />
       <Hero />
+      <Marquee />
       <Intro />
       <Experiences />
-      <CafeBand />
       <Features />
       <Consultant />
       <Highlights />

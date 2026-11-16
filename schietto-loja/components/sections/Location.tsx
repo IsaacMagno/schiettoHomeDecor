@@ -1,7 +1,6 @@
-﻿import AnimatedSectionHeader from '@/components/ui/AnimatedSectionHeader'
+import AnimatedSectionHeader from '@/components/ui/AnimatedSectionHeader'
 import { Clock, MapPin, MessageCircle, Phone } from 'lucide-react'
 import {
-  CAFE_URL,
   INSTAGRAM_URL,
   MAPS_URL,
   PHONE_DISPLAY,
@@ -42,10 +41,6 @@ export default function Location() {
                 </li>
               ))}
             </ul>
-            <p className="mt-4 font-body text-xs italic text-loja-charcoal/70">
-              A loja de decoração e o Caffè Schiètto funcionam nos mesmos
-              horários.
-            </p>
           </div>
 
           {/* Endereço */}
@@ -68,17 +63,6 @@ export default function Location() {
               A loja fica no andar superior de um casarão histórico no centro de
               Pedreira — um endereço com charme e história, pensado para uma
               visita tranquila e inspiradora.
-            </p>
-            <p className="mt-3 font-body text-sm italic text-loja-muted">
-              Mesmo endereço do{' '}
-              <a
-                href={CAFE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-loja-rosegold underline-offset-2 transition-colors hover:underline"
-              >
-                Caffè Schiètto
-              </a>
             </p>
             <a
               href={MAPS_URL}

@@ -35,16 +35,8 @@ export default function SplitText({
           aria-hidden="true"
         >
           <span
-            className="inline-block will-change-transform"
-            style={
-              inView
-                ? {
-                    animation: `splitReveal 0.8s cubic-bezier(0.22, 1, 0.36, 1) ${
-                      delay + index * 60
-                    }ms both`,
-                  }
-                : { transform: 'translateY(110%)' }
-            }
+            className={`split-word ${inView ? 'is-in' : ''}`}
+            style={{ animationDelay: `${delay + index * 60}ms` }}
           >
             {word}
             {index < words.length - 1 ? ' ' : ''}

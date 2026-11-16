@@ -4,6 +4,7 @@ import './globals.css'
 import AdAttribution from '@/components/analytics/AdAttribution'
 import CookieConsent from '@/components/analytics/CookieConsent'
 import { SITE_URL } from '@/lib/contact'
+import { MOTION_BOOT_SCRIPT } from '@/lib/motion'
 
 const displayFont = Jost({
   subsets: ['latin'],
@@ -62,6 +63,8 @@ export default function RootLayout({
       <body
         className={`${displayFont.variable} ${bodyFont.variable} font-body antialiased`}
       >
+        {/* ?movimento=completo liga todas as animações antes da primeira pintura */}
+        <script dangerouslySetInnerHTML={{ __html: MOTION_BOOT_SCRIPT }} />
         {children}
         {/* Origem do anúncio (utm) nas mensagens de WhatsApp; não usa cookies */}
         <AdAttribution />

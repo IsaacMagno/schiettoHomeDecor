@@ -2,13 +2,12 @@
 
 import { useEffect, useState } from 'react'
 import { MessageCircle, Menu, X } from 'lucide-react'
-import { CAFE_URL, WHATSAPP_URL } from '@/lib/contact'
+import { WHATSAPP_URL } from '@/lib/contact'
 
 const NAV_LINKS = [
   { label: 'Início', href: '#' },
   { label: 'Sobre', href: '#sobre' },
   { label: 'Experiências', href: '#experiencias' },
-  { label: 'Café', href: '#cafe' },
   { label: 'Composições', href: '#composicoes' },
   { label: 'Galeria', href: '#galeria' },
   { label: 'Localização', href: '#localizacao' },
@@ -85,18 +84,6 @@ export default function Header() {
 
           {/* Ações desktop */}
           <div className="hidden items-center gap-3 lg:flex">
-            <a
-              href={CAFE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 rounded-full border px-5 py-2 font-body text-sm font-medium transition-all duration-300 hover:border-loja-rosegold hover:bg-loja-rosegold hover:text-loja-offwhite focus-visible:outline focus-visible:outline-2 focus-visible:outline-loja-rosegold focus-visible:outline-offset-2 ${
-                solid
-                  ? 'border-loja-charcoal/30 text-loja-charcoal'
-                  : 'border-loja-offwhite/40 text-loja-offwhite'
-              }`}
-            >
-              Caffè Schiètto
-            </a>
             <a
               href={WHATSAPP_URL}
               target="_blank"
@@ -178,15 +165,6 @@ export default function Header() {
           </nav>
 
           <div className="mt-auto flex flex-col gap-3 pt-10">
-            <a
-              href={CAFE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex cursor-pointer items-center justify-center rounded-full border border-loja-charcoal/25 px-6 py-3.5 font-body text-sm font-medium tracking-wide text-loja-charcoal transition-all duration-300 hover:border-loja-rosegold hover:bg-loja-rosegold hover:text-loja-offwhite"
-              onClick={closeMobile}
-            >
-              Caffè Schiètto
-            </a>
             <a
               href={WHATSAPP_URL}
               target="_blank"

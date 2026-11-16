@@ -1,8 +1,9 @@
-import { ArrowUpRight, Sofa } from 'lucide-react'
+import { ArrowUpRight } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import Reveal from '@/components/ui/Reveal'
 import SplitText from '@/components/ui/SplitText'
 import SectionCard from '@/components/ui/SectionCard'
+import Tilt from '@/components/ui/Tilt'
 import ProgressiveImage from '@/components/ui/ProgressiveImage'
 import { EXPERIENCE_IMAGES } from '@/lib/gallery'
 import { WHATSAPP_MESSAGES, whatsappUrl } from '@/lib/contact'
@@ -34,12 +35,11 @@ const EXPERIENCES: readonly Experience[] = [
   },
   {
     image: EXPERIENCE_IMAGES.semijoias,
-    alt: 'Semijoias em exposição na Schiètto',
+    alt: 'Pedras preciosas e esferas de cristal em exposição na Schiètto',
     title: 'Semijoias e Pedras',
     description:
       'Semijoias e pedras preciosas delicadas e atemporais, para o dia a dia e para ocasiões que merecem brilho.',
-    // Mobile: sobe o foco para a joia não cortar na base do card 5:4
-    imageClass: 'object-cover object-[center_88%] md:object-[center_72%]',
+    imageClass: 'object-cover object-[center_75%]',
     message: WHATSAPP_MESSAGES.semijoias,
     cta: 'Perguntar sobre semijoias',
   },
@@ -54,10 +54,9 @@ const EXPERIENCES: readonly Experience[] = [
     cta: 'Pedir ajuda para compor',
   },
   {
-    // Troque por uma foto (image + alt) quando houver registro de almofadas,
-    // estofados e cobertas.
-    icon: Sofa,
-    caption: 'Almofadas · Estofados · Cobertas',
+    image: EXPERIENCE_IMAGES.casa,
+    alt: 'Cobertas e almofadas em tons neutros na Schiètto',
+    imageClass: 'object-cover',
     title: 'Casa e Conforto',
     description:
       'Almofadas, estofados, cobertas e tudo o que traz aconchego e sofisticação para o seu lar.',
@@ -92,9 +91,10 @@ export default function Experiences() {
         {EXPERIENCES.map((item, index) => {
           const Icon = item.icon
           return (
-            <Reveal key={item.title} delay={index * 150}>
-              <div className="group grid h-full grid-rows-[auto_1fr] gap-6 rounded-lg border border-loja-blush/60 p-4 transition-colors duration-500 hover:border-loja-rosegold">
-                <div className="relative aspect-[5/4] w-full overflow-hidden rounded-lg bg-loja-champagne/40">
+            <Reveal key={item.title} delay={index * 150} className="h-full">
+              <Tilt className="h-full rounded-lg">
+              <div className="group grid h-full grid-rows-[auto_1fr] gap-6 rounded-lg border border-loja-blush/60 p-4 transition-[border-color,box-shadow] duration-500 hover:border-loja-rosegold hover:shadow-[0_18px_40px_-18px_rgba(52,19,12,0.35)]">
+                <div className="img-curtain relative aspect-[5/4] w-full overflow-hidden rounded-lg bg-loja-champagne/40">
                   {item.image ? (
                     <ProgressiveImage
                       src={item.image}
@@ -137,6 +137,7 @@ export default function Experiences() {
                   </a>
                 </div>
               </div>
+              </Tilt>
             </Reveal>
           )
         })}

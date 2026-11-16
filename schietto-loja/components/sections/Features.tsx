@@ -1,10 +1,10 @@
-﻿import {
+import {
   Sparkles,
   HeartHandshake,
   Gem,
   Building2,
   Tag,
-  Coffee,
+  Gift,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import Reveal from '@/components/ui/Reveal'
@@ -47,10 +47,10 @@ const FEATURES: {
       'Sem surpresas: você conhece cada peça pessoalmente, com orientação honesta e sem pressão.',
   },
   {
-    icon: Coffee,
-    title: 'Experiência completa',
+    icon: Gift,
+    title: 'Do presente ao projeto',
     description:
-      'No mesmo endereço do Caffè Schiètto — sua visita pode começar com um bom café e terminar com uma descoberta.',
+      'Um mimo especial ou a decoração de um ambiente inteiro: a gente ajuda você a escolher, com calma e sem compromisso.',
   },
 ]
 
@@ -70,7 +70,7 @@ export default function Features() {
             <Reveal key={feature.title} delay={(index % 3) * 120}>
               <div className="grid gap-4">
                 {/* Linha divisória fina no topo, como na referência */}
-                <div className="h-[0.5px] w-full bg-loja-dark/40" />
+                <div className="line-draw h-[0.5px] w-full bg-loja-dark/40" />
                 <div className="flex items-center gap-3">
                   <Icon
                     className="h-5 w-5 text-loja-rosegold"

@@ -6,7 +6,7 @@ import { addDays, isHoliday } from '@/lib/holidays'
 type Day = { open: [number, number]; close: [number, number] }
 
 // Loja e café têm o mesmo horário. Mantenha em sincronia com Location.tsx,
-// CafeBand.tsx, Footer.tsx e LocalBusinessJsonLd.tsx.
+// Footer.tsx e LocalBusinessJsonLd.tsx.
 const WEEKDAY: Day = { open: [9, 0], close: [18, 0] }
 // Sábado, domingo e feriados
 const WEEKEND: Day = { open: [8, 30], close: [18, 0] }

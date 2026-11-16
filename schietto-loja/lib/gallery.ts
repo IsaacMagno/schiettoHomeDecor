@@ -37,7 +37,8 @@ export const HERO_SLIDES = [
 
 export const EXPERIENCE_IMAGES = {
   homeDecor: v('IMG_9160'),
-  semijoias: v('IMG_9124'),
+  semijoias: v('IMG_9155'),
+  casa: v('IMG_9140'),
   composicoes: v('IMG_9164'),
 } as const
 
