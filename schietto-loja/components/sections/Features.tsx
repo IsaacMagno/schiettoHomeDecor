@@ -70,7 +70,7 @@ export default function Features() {
             <Reveal key={feature.title} delay={(index % 3) * 120}>
               <div className="grid gap-4">
                 {/* Linha divisória fina no topo, como na referência */}
-                <div className="h-[0.5px] w-full bg-loja-dark/40" />
+                <div className="line-draw h-[0.5px] w-full bg-loja-dark/40" />
                 <div className="flex items-center gap-3">
                   <Icon
                     className="h-5 w-5 text-loja-rosegold"

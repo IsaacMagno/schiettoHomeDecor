@@ -11,7 +11,7 @@ export default function Hero() {
       <HeroSlider />
 
       {/* Conteúdo ancorado na base, à esquerda */}
-      <div className="pointer-events-none relative z-10 w-full px-6 pb-28 sm:px-10 sm:pb-16 lg:px-12 lg:pb-20">
+      <div className="hero-content pointer-events-none relative z-10 w-full px-6 pb-28 sm:px-10 sm:pb-16 lg:px-12 lg:pb-20">
         <div className="animate-fade-in-up flex flex-wrap items-center gap-x-4 gap-y-2 [animation-delay:0.1s]">
           <p className="font-body text-xs font-medium uppercase tracking-[0.35em] text-loja-champagne">
             Bem-vindo à Schiètto

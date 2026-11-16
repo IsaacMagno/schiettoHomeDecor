@@ -1,5 +1,6 @@
 import { MessageCircle } from 'lucide-react'
 import Reveal from '@/components/ui/Reveal'
+import Magnetic from '@/components/ui/Magnetic'
 import SplitText from '@/components/ui/SplitText'
 import { WHATSAPP_URL } from '@/lib/contact'
 
@@ -28,6 +29,7 @@ export default function ClosingCTA() {
       </Reveal>
 
       <Reveal delay={350}>
+        <Magnetic>
         <a
           href={WHATSAPP_URL}
           target="_blank"
@@ -37,6 +39,7 @@ export default function ClosingCTA() {
           <MessageCircle className="h-4 w-4" strokeWidth={1.5} aria-hidden="true" />
           Chamar no WhatsApp
         </a>
+        </Magnetic>
       </Reveal>
     </section>
   )

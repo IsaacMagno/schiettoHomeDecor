@@ -11,7 +11,7 @@ export default function Consultant() {
     <SectionCard id="composicoes">
       <div className="flex flex-col items-center gap-12 lg:flex-row lg:gap-16">
         <Reveal className="w-full max-w-sm shrink-0">
-          <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-loja-champagne/40">
+          <div className="img-curtain relative aspect-[3/4] overflow-hidden rounded-lg bg-loja-champagne/40">
             <ProgressiveImage
               src={COMPOSICAO_IMAGE}
               alt="Composição de peças Schiètto — mesa posta com orquídeas, cristais e porcelanas"
